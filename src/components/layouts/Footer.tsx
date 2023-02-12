@@ -13,7 +13,7 @@ const Footer = () => {
           <ul className='space-y-3'>
             <li>
               - Certification Professional Management Professional PMP® du PMI®
-            </li>
+            </li> 
             <li>- Certification PSM 1</li>
             <li>- Certification ITIL 4</li>
           </ul>
