@@ -1,15 +1,16 @@
-import reactLogo from './assets/react.svg'
-import './App.scss'
+import reactLogo from "./assets/react.svg";
+import { Routes, Route } from "react-router-dom";
+import "./App.scss";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
-
   return (
-    <div className="App bg-gray-600">
-      <h1 className='text-green-400'>
-        <img src='/assets/LOGO-ADAA-CERTIF.png' alt='test' />
-      </h1>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
