@@ -17,7 +17,7 @@ const Button: FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      style={{ maxWidth: 210 }}
+      style={{ maxWidth: 220 }}
       onClick={onClick}
       className={`${className} ${
         rounded && "rounded"

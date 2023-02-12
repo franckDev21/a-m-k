@@ -10,7 +10,7 @@ const Footer = () => {
         </div>
         <div className="w-1/3">
           <h1 className="font-bold mb-2 text-xl">FORMATIONS</h1>
-          <ul>
+          <ul className='space-y-3'>
             <li>
               - Certification Professional Management Professional PMP® du PMI®
             </li>
@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
         <div className="w-1/3">
           <h1 className="font-bold mb-2 text-xl">ADRESSES ET CONTACTS</h1>
-          <ul>
+          <ul className='space-y-3'>
             <li>- Hôtel SERENA Bali, Douala - Cameroun</li>
             <li>- Immeuble Air France à Bastos, Yaoundé - Cameroun</li>
             <li>- Polyclinique des 02 plateaux, Abidjan - Côte d’Ivoire</li>
