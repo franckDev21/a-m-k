@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = () => { 
   return (
     <footer className="bg-secondary text-white py-10 font-light">
       <div className="container flex space-x-4 mx-auto ">
