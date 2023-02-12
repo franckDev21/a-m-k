@@ -5,7 +5,9 @@ function App() {
 
   return (
     <div className="App bg-gray-600">
-      <h1 className='text-green-400'>Init</h1>
+      <h1 className='text-green-400'>
+        <img src='/assets/LOGO-ADAA-CERTIF.png' alt='test' />
+      </h1>
     </div>
   )
 }
