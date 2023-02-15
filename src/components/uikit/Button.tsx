@@ -5,6 +5,9 @@ interface ButtonProps {
   label: string;
   rounded?: boolean;
   icon?: ReactNode;
+  width?: number;
+  defauldPadding?: boolean;
+  defaultColor?: boolean;
   onClick?: () => any;
 }
 
@@ -13,15 +16,18 @@ const Button: FC<ButtonProps> = ({
   label,
   rounded = false,
   icon,
+  width,
+  defauldPadding = true,
+  defaultColor = true,
   onClick = () => {},
 }) => {
   return (
     <button
-      style={{ maxWidth: 220 }}
+      style={{ maxWidth: width ?? 220 }}
       onClick={onClick}
-      className={`${className} ${
+      className={` ${defauldPadding && 'px-4 py-2.5'}  border-2 border-transparent inline-flex items-center space-x-2 ${defaultColor && 'text-white'} ${className} ${
         rounded && "rounded"
-      } px-4 py-2.5 inline-flex items-center space-x-2 text-white`}
+      }`}
     >
       {icon}
       <span>{label}</span>

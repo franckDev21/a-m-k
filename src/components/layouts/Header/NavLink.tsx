@@ -12,7 +12,7 @@ interface NavLinkProps {
 const NavLink: FC<NavLinkProps> = ({ label, icon, href, className = '', active }) => {
   return (
     <Link
-      className={`${className} ${active && 'after:block  after:absolute after:w-10 after:h-0.5 after:rounded-md after:bg-white after:-bottom-1 after:left-1/2 after:-translate-x-1/2 font-bold'} relative inline-flex space-x-2 items-center text-white`}
+      className={`${className} ${active && 'after:block  after:absolute after:w-10 after:h-0.5 after:rounded-md after:bg-primary after:-bottom-1 after:left-1/2 after:-translate-x-1/2 font-bold'} relative inline-flex space-x-2 items-center `}
       to={href}
     >
       {icon}
