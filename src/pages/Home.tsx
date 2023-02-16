@@ -7,6 +7,7 @@ import { listeCertifications } from "../utils/testData";
 import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 import Accordeons from "../components/pages/home-page/Accordeons";
 import { FaCheck } from "react-icons/fa";
+import NewLetter from "../components/layouts/NewLetter";
 
 const Home = () => {
   return (
@@ -108,7 +109,7 @@ const Home = () => {
           formés de plus de +350 organisations, y compris ces organisations
           réputées
         </h1>
-        <div className="pt-14 grid grid-cols-5 gap-5">
+        <div className="pt-14 grid grid-cols-5 gap-5 px-2 lg:px-0">
           <img
             src="/assets/logo les brasseries du cameroun.png"
             className="w-full"
@@ -164,7 +165,7 @@ const Home = () => {
             </div>
             <span className="h-1 w-1/6 md-w-28 lg:w-40 border-t-2 border-dashed"></span>
             <div className="w-1/2 lg:max-w-max px-2 lg:px-10 border-2 border-dashed lg:border-r text-center font-bold md:text-xl text-gray-600 bg-white cursor-pointer  py-2">
-              PMP
+              PSM
             </div>
             <span className="h-1 w-1/6 md-w-28 lg:w-40 border-t-2 border-dashed"></span>
             <div className="w-1/2 lg:max-w-max px-2 lg:px-10 border-2 border-dashed text-center font-bold md:text-xl text-gray-600 bg-white cursor-pointer  py-2">
@@ -368,6 +369,10 @@ const Home = () => {
           </div>
 
         </div>
+      </div>
+
+      <div className="container mx-auto pt-20 pb-10 px-3 lg:px-0">
+      <NewLetter />
       </div>
     </MainLayout>
   );
