@@ -24,14 +24,14 @@ const Accordeon: FC<AccordeonProps> = ({
     <div className={`${className}  accordeon ${active && "active"}`}>
       <h1
         onClick={toggleActive}
-        className={`space-x-2 accordeon__title cursor-pointer text-xl font-bold px-4 py-5 ${active ?"bg-gradient-to-r from-blue-400 to-primary text-white":'bg-white'}   flex items-center`}
+        className={`space-x-2 accordeon__title cursor-pointer text-lg lg:text-xl font-bold px-2 lg:px-4 py-5 ${active ?"bg-gradient-to-r from-blue-400 to-primary text-white":'bg-white'}   flex lg:items-center`}
       >
         <span className="p-2 ">
           {active && <FaChevronUp className="text-xl" />}
           {!active && <FaChevronDown className="text-xl" />}
         </span>
         <span>{number}.</span>
-        <span>{title}</span>
+        <span className=''>{title}</span>
       </h1>
       <p className="bg-white accordeon__content">{children}</p>
     </div>

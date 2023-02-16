@@ -1,14 +1,21 @@
 import React, { FC } from "react";
 import Accordeon from "./Accordeon";
 
-
-const Accordeons: FC<{ className?: string }> = ({ className = '' }) => {
+const Accordeons: FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <div className={`${className}`}>
-      <div className="space-x-1 flex pb-2 w-[70%] mx-auto">
-        <div className="w-1/3 text-center font-bold text-xl bg-tertiary cursor-pointer text-white px-4 py-2">FAQ PMP </div>
-        <div className="w-1/3 text-center font-bold text-xl bg-gray-300 cursor-pointer text-white px-4 py-2">FAQ PSM  </div>
-        <div className="w-1/3 text-center font-bold text-xl bg-gray-300 cursor-pointer text-white px-4 py-2">FAQ ITIL 4  </div>
+      <div className="flex px-3 lg:px-0 lg:w-[70%] items-center justify-center mx-auto my-6 space-x-4 ">
+        <div className="w-1/2 lg:max-w-max px-2 lg:px-10 border-2 border-dashed border-tertiary text-center font-bold md:text-xl text-tertiary bg-tertiary bg-opacity-10 cursor-pointer  py-2">
+          PMP
+        </div>
+        <span className="h-1 w-1/6 md-w-28 lg:w-40 border-t-2 border-dashed"></span>
+        <div className="w-1/2 lg:max-w-max px-2 lg:px-10 border-2 border-dashed lg:border-r text-center font-bold md:text-xl text-gray-600 bg-white cursor-pointer  py-2">
+          PSM
+        </div>
+        <span className="h-1 w-1/6 md-w-28 lg:w-40 border-t-2 border-dashed"></span>
+        <div className="w-1/2 lg:max-w-max px-2 lg:px-10 border-2 border-dashed text-center font-bold md:text-xl text-gray-600 bg-white cursor-pointer  py-2">
+          ITIL 4
+        </div>
       </div>
       <Accordeon
         number={1}
