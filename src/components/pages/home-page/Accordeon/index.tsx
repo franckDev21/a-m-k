@@ -21,12 +21,12 @@ const Accordeon: FC<AccordeonProps> = ({
   const toggleActive = () => setActive(!active);
 
   return (
-    <div className={`${className} shadow accordeon ${active && "active"}`}>
+    <div className={`${className}  accordeon ${active && "active"}`}>
       <h1
         onClick={toggleActive}
-        className={`space-x-2 accordeon__title cursor-pointer text-xl font-bold px-4 py-3 ${active ?"bg-gradient-to-r from-blue-400 to-primary":'bg-gray-100'} bg-gray-100  flex items-center`}
+        className={`space-x-2 accordeon__title cursor-pointer text-xl font-bold px-4 py-5 ${active ?"bg-gradient-to-r from-blue-400 to-primary text-white":'bg-white'}   flex items-center`}
       >
-        <span className="p-2 bg-white">
+        <span className="p-2 ">
           {active && <FaChevronUp className="text-xl" />}
           {!active && <FaChevronDown className="text-xl" />}
         </span>
