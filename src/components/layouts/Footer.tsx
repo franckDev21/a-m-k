@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer
       style={{ backgroundImage: `url('/assets/bg.svg')`, backgroundRepeat: 'no-repeat', backgroundPosition: 'top' }}
-      className={`relative px-4 lg:px-0 z-10 dark:bg-secondary dark:text-white bg-white pt-20 pb-10 mt-10 lg:pt-[120px] lg:pb-20 `}
+      className={`relative px-4 lg:px-0 z-10 bg-secondary text-white bg-white pt-20 pb-10 mt-10 lg:pt-[120px] lg:pb-20 `}
     >
     
       <div className="container mx-auto">
