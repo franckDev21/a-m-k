@@ -1,52 +1,133 @@
-import React from "react";
-import NavLink from "./NavLink";
-import { BsTelephone } from "react-icons/bs";
+import React, { FC, useState } from "react";
 import { BiPencil } from "react-icons/bi";
-import { FaUserAlt } from "react-icons/fa";
-import CartShop from "../../uikit/CartShop";
+import { BsTelephone } from "react-icons/bs";
+import { FaLock, FaUserAlt } from "react-icons/fa";
+import NavLink from "./NavLink";
+import Button from "../../uikit/Button";
 import Logo from "../../uikit/Logo";
+import CartShop from "../../uikit/CartShop";
 import MenuBerger from "../../uikit/MenuBerger";
+import { TbSchool } from "react-icons/tb";
+import LoginModal from "../../../pages/LoginModal";
+import useModal from "../../../hooks/useModal";
 
-const Header = () => {
+interface HeaderProps {
+  className?: string;
+}
+
+const Header: FC<HeaderProps> = ({ className = "" }) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const { show, openModal, closeModal } = useModal();
+
   return (
-    <header className="bg-secondary p-3">
-      <div className="container mx-auto w-full justify-end items-center space-x-6 hidden md:flex">
-        <NavLink
-          className="text-sm opacity-70 hover:opacity-100 transition"
-          icon={<BsTelephone className="text-xs" />}
-          label="+237 6 78 35 32 45"
-          href="#"
-        />
-        <NavLink
-          className="text-sm opacity-70 hover:opacity-100 transition"
-          icon={<BiPencil />}
-          label="Nous contacter"
-          href="#"
-        />
-        <NavLink
-          className="text-sm opacity-70 hover:opacity-100 transition"
-          icon={<FaUserAlt className="text-xs" />}
-          label="Espace Etudiant"
-          href="#" 
-        />
+    <>
+      {/* login modal */}
+      <LoginModal show={show} onClose={closeModal} />
 
-        <CartShop />
-      </div>
+      <header className={`${className}`}>
+        <div className="bg-black">
+          <div className="container py-2 md:px-3  mx-auto w-full justify-end items-center space-x-6 hidden md:flex">
+            <NavLink
+              className="text-sm opacity-70 hover:opacity-100 transition text-white"
+              icon={<BsTelephone className="text-xs" />}
+              label="+237 6 78 35 32 45"
+              href="#"
+            />
+            <NavLink
+              className="text-sm opacity-70 hover:opacity-100 transition text-white"
+              icon={<BiPencil />}
+              label="Nous contacter"
+              href="#"
+            />
+            <NavLink
+              className="text-sm opacity-70 hover:opacity-100 transition text-white"
+              icon={<FaUserAlt className="text-xs" />}
+              label="Espace Etudiant"
+              href="#"
+            />
 
-      <div className="container mx-auto flex items-center justify-between md:pt-3">
-        <Logo />
+            <CartShop />
+          </div>
+        </div>
 
-        <MenuBerger className="md:hidden" />
+        <div className="container px-3 mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-10 py-4 relative">
+            <Logo defaultWidth={false} className="w-20" />
 
-        <nav className=" space-x-6 hidden md:block">
-          <NavLink active label="Présentation" href="#" />
-          <NavLink className="font-light" label="Examents blancs" href="#" />
-          <NavLink className="font-light" label="Témoignages" href="#" />
-          <NavLink className="font-light" label="FAQ" href="#" />
-          <NavLink className="font-light" label="Offres" href="#" />
-        </nav>
-      </div>
-    </header>
+            <nav className="font-bold text-gray-700 space-x-6 sm:text-md hidden lg:block">
+              <NavLink
+                active
+                label="Présentation"
+                href="#"
+                className="text-gray-600"
+              />
+              <NavLink
+                label="Examents blancs"
+                href="#"
+                className="text-gray-600"
+              />
+              <NavLink label="Témoignages" href="#" className="text-gray-600" />
+              <NavLink label="FAQ" href="#" className="text-gray-600" />
+              <NavLink label="Offres" href="#" className="text-gray-600" />
+            </nav>
+          </div>
+
+          <div className="flex items-center space-x-2 md:hidden">
+            <Button
+              defauldPadding={false}
+              icon={<TbSchool className="text-2xl" />}
+              rounded
+              label="S'inscrire à une formation"
+              className="bg-primary px-2 text-sm font-bold py-1.5"
+            />
+            <MenuBerger
+              isOpen={showMenu}
+              onClick={() => setShowMenu(!showMenu)}
+            />
+          </div>
+
+          {/* mobile menu */}
+          {showMenu && (
+            <nav className="flex absolute items-center flex-col space-y-6 py-10 md:hidden top-16 left-0 w-full z-50 bg-white">
+              <NavLink
+                active
+                label="Présentation"
+                href="#"
+                className="text-gray-600"
+              />
+              <NavLink
+                label="Examents blancs"
+                href="#"
+                className="text-gray-600"
+              />
+              <NavLink label="Témoignages" href="#" className="text-gray-600" />
+              <NavLink label="FAQ" href="#" className="text-gray-600" />
+              <NavLink label="Offres" href="#" className="text-gray-600" />
+            </nav>
+          )}
+
+          <div className="space-x-2 hidden md:flex  items-center">
+            <MenuBerger className="lg:hidden" />
+            <Button
+              defauldPadding={false}
+              icon={<TbSchool className="text-2xl" />}
+              rounded
+              label="S'inscrire à une formation"
+              className="bg-primary px-2 text-sm font-bold py-1.5"
+            />
+            <Button
+              onClick={openModal}
+              defaultColor={false}
+              defauldPadding={false}
+              icon={<FaLock className="text-primary" />}
+              rounded
+              label="Se connecter"
+              className=" text-gray-700 border-gray-300 px-3 text-sm font-bold py-1.5 bg-primary bg-opacity-10"
+            />
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 

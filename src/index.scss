@@ -6,6 +6,12 @@
   max-width: 1200px;
 }
 
+.dashed-card-link{
+  &.active{
+    @apply border-tertiary text-tertiary bg-tertiary bg-opacity-10;
+  }
+}
+
 body{
   font-family: 'Roboto', sans-serif;
 }

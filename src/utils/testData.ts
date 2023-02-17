@@ -1,5 +1,32 @@
 import Certification from "../models/Certification";
 
+export const listOfComments = [
+  {
+    image: '/assets/student1-removebg-preview.png',
+    content: "« La formation Tech Lead d'Adaa est réellement en accord avec le monde de l'entreprise. Il était aussi important que la formation soit au niveau Bac +5, car j'avais déjà un Bac +3 : je ne suis pas déçu du tout, car l’apprentissage est progressif avec l’aide des mentors. »",
+    job: 'Product Manager, Orange Cameroun',
+    firstname: 'Danielle',
+    lastname: 'KOTTO',
+    certif: 'Certified PMP'
+  },
+  {
+    image: '/assets/e7754d_8a380ca3a39e445ba2077a07d868e468_mv2-removebg-preview.png',
+    content: "« J'ai suivi le simulateur d'examen PMP après avoir terminé ma préparation PMP. J'ai passé mon dernier mois à revoir mes notes que j'ai prises pendant mon étude PMP et j'ai passé des examens de simulation PMP dans ce simulateur. En moyenne, j'ai obtenu un score supérieur à 79 % et j'étais convaincu d'avoir vu plusieurs types de questions différents avant mon examen PMP. J'ai réussi l'examen PMP et ce simulateur d'examen PMP m'a aidé à avoir l'impression de refaire le même test lors de mon véritable examen. »",
+    job: 'Product Manager, Orange Cameroun',
+    firstname: 'Mathurin',
+    lastname: 'Toukam',
+    certif: 'Certified PMP'
+  },
+  {
+    image: '/assets/leatitia_800x0_20201126122450-removebg-preview.png',
+    content: "« En une phrase, une formation Adaa, c'est du challenge et du contenu de qualité. Dans la Tech, ce n'est pas tant ce qu'on sait qui compte, c'est ce qu'on est capable d'apprendre. Chez Adaa, on apprend vraiment à pêcher plutôt que d'attendre le poisson tout cuit dans le bec chaque jour. C'est donc un retour sur investissement vraiment intéressant ! »",
+    job: 'Product Manager, Orange Cameroun',
+    firstname: 'Claire',
+    lastname: 'Kamdom',
+    certif: 'Certified PMP'
+  },
+] as const;
+
 export const listeCertifications: Certification[] = [
   {
     id: 1,

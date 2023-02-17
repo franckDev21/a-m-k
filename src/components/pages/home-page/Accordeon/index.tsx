@@ -33,7 +33,7 @@ const Accordeon: FC<AccordeonProps> = ({
         <span>{number}.</span>
         <span className=''>{title}</span>
       </h1>
-      <p className="bg-white accordeon__content">{children}</p>
+      <div className="bg-white accordeon__content">{children}</div>
     </div>
   );
 };
