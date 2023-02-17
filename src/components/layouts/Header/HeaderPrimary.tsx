@@ -8,18 +8,19 @@ import Button from "../../uikit/Button";
 import Logo from "../../uikit/Logo";
 import CartShop from "../../uikit/CartShop";
 import MenuBerger from "../../uikit/MenuBerger";
+import { TbSchool } from "react-icons/tb";
 
 const HeaderPrimary: FC<{ className?: string }> = ({ className = "" }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <header className={`${className}`}>
-      <div className="bg-secondary">
+      <div className="bg-black">
         <div className="container py-2 md:px-3  mx-auto w-full justify-end items-center space-x-6 hidden md:flex">
           <NavLink
             className="text-sm opacity-70 hover:opacity-100 transition text-white"
             icon={<BsTelephone className="text-xs" />}
-            label="01 55 00 95 95"
+            label="+237 6 78 35 32 45"
             href="#"
           />
           <NavLink
@@ -31,7 +32,7 @@ const HeaderPrimary: FC<{ className?: string }> = ({ className = "" }) => {
           <NavLink
             className="text-sm opacity-70 hover:opacity-100 transition text-white"
             icon={<FaUserAlt className="text-xs" />}
-            label="Espace client"
+            label="Espace Etudiant"
             href="#"
           />
 
@@ -64,12 +65,15 @@ const HeaderPrimary: FC<{ className?: string }> = ({ className = "" }) => {
         <div className="flex items-center space-x-2 md:hidden">
           <Button
             defauldPadding={false}
-            icon={<GiCutDiamond />}
+            icon={<TbSchool className="text-2xl" />}
             rounded
-            label="Démo gratuite"
+            label="S'inscrire à une session"
             className="bg-primary px-2 text-sm font-bold py-1.5"
           />
-          <MenuBerger isOpen={showMenu} onClick={() => setShowMenu(!showMenu)} />
+          <MenuBerger
+            isOpen={showMenu}
+            onClick={() => setShowMenu(!showMenu)}
+          />
         </div>
 
         {/* mobile menu */}
@@ -96,9 +100,9 @@ const HeaderPrimary: FC<{ className?: string }> = ({ className = "" }) => {
           <MenuBerger className="lg:hidden" />
           <Button
             defauldPadding={false}
-            icon={<GiCutDiamond />}
+            icon={<TbSchool className="text-2xl" />}
             rounded
-            label="Démo gratuite"
+            label="S'inscrire à une session"
             className="bg-primary px-2 text-sm font-bold py-1.5"
           />
           <Button
@@ -106,8 +110,8 @@ const HeaderPrimary: FC<{ className?: string }> = ({ className = "" }) => {
             defauldPadding={false}
             icon={<FaLock className="text-primary" />}
             rounded
-            label="Sign in"
-            className=" text-gray-700 border-gray-300 px-3 text-sm font-bold py-1.5 hover:bg-primary hover:bg-opacity-10"
+            label="Se connecter"
+            className=" text-gray-700 border-gray-300 px-3 text-sm font-bold py-1.5 bg-primary bg-opacity-10"
           />
         </div>
       </div>

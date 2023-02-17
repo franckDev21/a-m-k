@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../uikit/Button";
-import { TbSchool } from "react-icons/tb";
+import { GiCutDiamond } from "react-icons/gi";
 
 const Banner = () => {
   return (
@@ -14,20 +14,20 @@ const Banner = () => {
           VOTRE SIMULATEUR DE TEST D’EXAMENS{" "}
         </h1>
         <p className="md:bg-white text-base font-bold md:font-normal md:text-base md:w-max px-3 py-2">
-          POUR PASSER AVEC SUCCES LES CERTIFICATIONS INTERNATIONALES{" "}
+          POUR PASSER AVEC SUCCÈS LES CERTIFICATIONS INTERNATIONALES{" "}
         </p>
         <h1 className="font-bold md:w-max inline-block  md:bg-white px-3 py-2">
-          (PMP®, SCRUM MASTER – PSM1 et ITIL4)
+          (PMP®, SCRUM MASTER – PSM1 et ITIL 4)
         </h1>
       </div>
       <div className="flex items-center space-x-6 relative z-20 mt-5 md:mt-10">
         <Button
           defauldPadding={false}
           width={400}
-          icon={<TbSchool className="text-2xl" />}
+          icon={<GiCutDiamond />}
           rounded
-          label="S'inscrire a une session"
-          className="bg-tertiary font-bold px-2 py-2 hover:border-white hover:bg-transparent"
+          label="Démo gratuite"
+          className="bg-tertiary font-bold px-6 py-2 hover:border-white hover:bg-transparent"
         />
       </div>
     </div>

@@ -1,11 +1,12 @@
 import React from "react";
 
-const Logo: React.FC<{ className?: string; defaultWidth?: boolean }> = ({
+const Logo: React.FC<{ className?: string; defaultWidth?: boolean,white?: boolean }> = ({
   className = "",
-  defaultWidth = true
+  defaultWidth = true,
+  white = false
 }) => {
   return (
-    <img src="/assets/LOGO-ADAA-CERTIF.png" className={`${className} ${defaultWidth && 'w-32'}`} />
+    <img src={`${white ? '/assets/logo_certif-removebg-.png':'/assets/LOGO-ADAA-CERTIF.png'}`} className={`${className} ${defaultWidth && 'w-32'}`} />
   );
 };
 

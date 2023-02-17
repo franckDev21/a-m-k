@@ -14,7 +14,7 @@ const Header = () => {
         <NavLink
           className="text-sm opacity-70 hover:opacity-100 transition"
           icon={<BsTelephone className="text-xs" />}
-          label="01 55 00 95 95"
+          label="+237 6 78 35 32 45"
           href="#"
         />
         <NavLink
@@ -26,8 +26,8 @@ const Header = () => {
         <NavLink
           className="text-sm opacity-70 hover:opacity-100 transition"
           icon={<FaUserAlt className="text-xs" />}
-          label="Espace client"
-          href="#"
+          label="Espace Etudiant"
+          href="#" 
         />
 
         <CartShop />
