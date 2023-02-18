@@ -37,7 +37,8 @@ const RegisterModal: FC<RegisterModalProps> = ({
   switchToRLogin,
 }) => {
   const [value, setValue] = useState<any>("");
-  const [valueTwho, onChange] = useState(new Date());
+  // const [valueTwho, onChange] = useState(new Date());
+  const [conditionOk, setConditionOk] = useState(false);
 
   const {
     register,
@@ -50,17 +51,18 @@ const RegisterModal: FC<RegisterModalProps> = ({
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
-    try {
-      let response: any = await RegisterApi(data);
-      if (response.success) {
-        alert(`${response.message}`);
-        reset();
-      } else {
-        console.log(response.errors);
+    if (conditionOk) {
+      try {
+        let response: any = await RegisterApi(data);
+        if (response.success) {
+          alert(`${response.message}`);
+          reset();
+        } else {
+          console.log(response.errors);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -251,6 +253,8 @@ const RegisterModal: FC<RegisterModalProps> = ({
                   type="checkbox"
                   id="checkbox"
                   className="text-tertiary"
+                  defaultChecked={conditionOk}
+                  onChange={() => setConditionOk(!conditionOk)}
                 />
                 <label htmlFor="checkbox">
                   En cliquant sur "S'inscrire", je confirme que j'ai 16 ans ou
@@ -264,7 +268,9 @@ const RegisterModal: FC<RegisterModalProps> = ({
               <button
                 type="submit"
                 className={`mt-5 md:mt-10 bg-primary text-white w-full rounded-lg py-4 font-bold ${
-                  !isValid || isSubmitting ? "disabled" : "active:scale-[.95]"
+                  !isValid || isSubmitting || !conditionOk
+                    ? "disabled"
+                    : "active:scale-[.95]"
                 } `}
               >
                 {isSubmitting ? (
