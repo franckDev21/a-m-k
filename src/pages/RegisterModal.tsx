@@ -70,7 +70,7 @@ const RegisterModal: FC<RegisterModalProps> = ({
     <React.Fragment>
       <Modal popup size="6xl" show={show} onClose={onClose}>
         <div className="flex py-4 md:min-h-[500px] relative">
-          <span className="absolute right-2 top-2" onClick={onClose}>
+          <span className="absolute z-20 right-2 top-2" onClick={onClose}>
             <button
               aria-label="Close"
               className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
