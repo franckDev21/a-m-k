@@ -25,7 +25,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
           />
         </a>
       </span>
-      <span className="fixed z-20 bottom-4 md:bottom-10 right-4 md:right-8 bg-tertiary text-white p-2.5 rounded-full">
+      <span className="fixed z-20 bottom-4 md:bottom-5 right-4 md:right-8 bg-tertiary text-white p-2.5 rounded-full">
         <GoChevronUp />
       </span>
       <Footer />

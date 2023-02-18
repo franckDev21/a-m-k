@@ -1,5 +1,7 @@
-import { Modal, Tooltip } from "flowbite-react";
+import { Modal, Spinner, Tooltip } from "flowbite-react";
 import React, { FC, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { FaLock } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import Logo from "../components/uikit/Logo";
@@ -8,6 +10,8 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import DatePicker from "react-date-picker";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
+import { RegisterSchema } from "../utils/validatorShema";
+import { RegisterApi } from "../utils/testApi";
 
 interface RegisterModalProps {
   show: boolean;
@@ -15,6 +19,16 @@ interface RegisterModalProps {
   switchToRLogin?: () => any;
   onClose: () => any;
 }
+
+type Inputs = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirm: string;
+  birthday: string;
+  tel: string;
+};
 
 const RegisterModal: FC<RegisterModalProps> = ({
   show,
@@ -24,6 +38,31 @@ const RegisterModal: FC<RegisterModalProps> = ({
 }) => {
   const [value, setValue] = useState<any>("");
   const [valueTwho, onChange] = useState(new Date());
+
+  const {
+    register,
+    formState: { errors, isValid, isSubmitting },
+    handleSubmit,
+    reset,
+    setError,
+  } = useForm<Inputs>({
+    resolver: yupResolver(RegisterSchema),
+  });
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(data);
+    try {
+      let response: any = await RegisterApi(data);
+      if (response.success) {
+        alert(`${response.message}`);
+        reset();
+      } else {
+        console.log(response.errors);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -62,7 +101,10 @@ const RegisterModal: FC<RegisterModalProps> = ({
               alt="login-svg"
             /> */}
           </div>
-          <div className="w-full md:w-1/2 relative ">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="w-full md:w-1/2 relative "
+          >
             <header className="text-center space-y-2 flex flex-col justify-center items-center">
               <Logo />
               <div>
@@ -71,46 +113,88 @@ const RegisterModal: FC<RegisterModalProps> = ({
                 </h1>
               </div>
             </header>
-            <form className="pt-6 md:pt-2 space-y-2">
+            <div className="pt-6 md:pt-2 space-y-2">
               <div className="flex space-x-2 mx-5 sm:mx-10">
                 <div className="w-1/2 overflow-hidden relative bg-white rounded-lg ">
                   <input
+                    {...register("lastname")}
                     type="text"
                     placeholder="Entrer votre Nom"
                     className="px-6 py-3 outline-none ring-0 border-0 w-full bg-gray-100"
                   />
+                  {errors.lastname && (
+                    <span className="inline-block text-sm text-red-600">
+                      {errors.lastname.message}
+                    </span>
+                  )}
                 </div>
                 <div className="w-1/2 overflow-hidden relative bg-white rounded-lg ">
                   <input
+                    {...register("firstname")}
                     type="text"
                     placeholder="Entrer votre Prénom"
                     className="px-6 py-3 outline-none ring-0 border-0 w-full bg-gray-100"
                   />
+                  {errors.firstname && (
+                    <span className="inline-block text-sm text-red-600">
+                      {errors.firstname.message}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="overflow-hidden relative bg-white rounded-lg mx-5 sm:mx-10">
                 <input
+                  {...register("password")}
                   type="password"
                   placeholder="Mot de passe"
                   className="px-6 py-3 outline-none ring-0 border-0 w-full bg-gray-100"
                 />
-                <FaLock className="text-xl absolute right-5 text-gray-600 top-1/2 -translate-y-1/2" />
+                {errors.password && (
+                  <span className="inline-block text-sm text-red-600">
+                    {errors.password.message}
+                  </span>
+                )}
+                <FaLock
+                  className={`text-2xl absolute opacity-50 right-5 text-gray-600 ${
+                    errors.password ? "top-6" : "top-1/2 "
+                  } -translate-y-1/2`}
+                />
               </div>
               <div className="overflow-hidden relative bg-white rounded-lg mx-5 sm:mx-10">
                 <input
+                  {...register("confirm")}
                   type="password"
                   placeholder="Corfirmé le mot de passe"
                   className="px-6 py-3 outline-none ring-0 border-0 w-full bg-gray-100"
                 />
-                <FaLock className="text-xl absolute right-5 text-gray-600 top-1/2 -translate-y-1/2" />
+                {errors.confirm && (
+                  <span className="inline-block text-sm text-red-600">
+                    {errors.confirm.message}
+                  </span>
+                )}
+                <FaLock
+                  className={`text-2xl absolute opacity-50 right-5 text-gray-600 ${
+                    errors.confirm ? "top-6" : "top-1/2 "
+                  } -translate-y-1/2`}
+                />
               </div>
               <div className="overflow-hidden relative bg-white rounded-lg mx-5 sm:mx-10">
                 <input
+                  {...register("email")}
                   type="email"
                   placeholder="Adresse e-mail"
                   className="px-6 py-3 outline-none ring-0 border-0 w-full bg-gray-100"
                 />
-                <MdAlternateEmail className="text-2xl absolute right-5 text-gray-600 top-1/2 -translate-y-1/2" />
+                {errors.email && (
+                  <span className="inline-block text-sm text-red-600">
+                    {errors.email.message}
+                  </span>
+                )}
+                <MdAlternateEmail
+                  className={`text-2xl absolute opacity-50 right-5 text-gray-600 ${
+                    errors.email ? "top-6" : "top-1/2 "
+                  } -translate-y-1/2`}
+                />
               </div>
               <div className="overflow-hidden relative bg-white rounded-lg mx-5 sm:mx-10">
                 {/* <input
@@ -119,38 +203,75 @@ const RegisterModal: FC<RegisterModalProps> = ({
                   className="px-6 py-3 outline-none ring-0 border-0 w-full bg-gray-100"
                 /> */}
                 <PhoneInput
+                  {...register("tel")}
                   placeholder="Enter phone number"
                   value={value}
                   onChange={setValue}
                 />
+                {errors.tel && (
+                  <span className="inline-block text-sm text-red-600">
+                    {errors.tel.message}
+                  </span>
+                )}
               </div>
               <div className="  relative bg-white rounded-lg mx-5 sm:mx-10">
                 <label className="pb-2 inline-block">Date de naissance</label>
                 <div className="flex">
                   <div className="w-[calc(100%-200px)]">
-                    <DatePicker
+                    {/* <DatePicker
+                      {...register('birthday')}
                       className="px-4 py-2 rounded-md focus:outline-none focus:ring-0 focus:border-0 outline-none shadow-none ring-0 border-0 w-full bg-gray-100"
                       onChange={onChange}
                       value={valueTwho}
+                    /> */}
+                    <input
+                      {...register("birthday")}
+                      type="date"
+                      className="px-6 py-3 rounded-md outline-none ring-0 border-0 w-full bg-gray-100"
                     />
+                    {errors.birthday && (
+                      <span className="inline-block text-sm text-red-600">
+                        {errors.birthday.message}
+                      </span>
+                    )}
                   </div>
-                  <div className="flex-grow flex items-center pl-2">
-                    <Tooltip
-                      content="Votre date de naissance nous permettra de vous offrir des cadeaux spéciaux"
-                    >
+                  <div
+                    className={`flex-grow flex items-center pl-2 ${
+                      errors.birthday && "-translate-y-3"
+                    }`}
+                  >
+                    <Tooltip content="Votre date de naissance nous permettra de vous offrir des cadeaux spéciaux">
                       <BsFillQuestionCircleFill className="text-primary cursor-pointer text-4xl" />
                     </Tooltip>
                   </div>
                 </div>
               </div>
               <div className="flex space-x-2 text-xs mx-10 items-start">
-                <input type="checkbox" id="checkbox" className="text-tertiary" />
-                <label htmlFor="checkbox">En cliquant sur "S'inscrire", je confirme que j'ai 16 ans ou plus et j'accepte les conditions d'utilisation, la politique de confidentialité, la politique de cookies et j'accepte de recevoir des nouvelles et des promotions.</label>
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  className="text-tertiary"
+                />
+                <label htmlFor="checkbox">
+                  En cliquant sur "S'inscrire", je confirme que j'ai 16 ans ou
+                  plus et j'accepte les conditions d'utilisation, la politique
+                  de confidentialité, la politique de cookies et j'accepte de
+                  recevoir des nouvelles et des promotions.
+                </label>
               </div>
-            </form>
+            </div>
             <div className="text-right mx-5 sm:mx-10 pt-3">
-              <button className="mt-5 md:mt-6 bg-primary text-white w-full rounded-lg py-4 font-bold  hover:bg-opacity-100 transition">
-                Inscription
+              <button
+                type="submit"
+                className={`mt-5 md:mt-10 bg-primary text-white w-full rounded-lg py-4 font-bold ${
+                  !isValid || isSubmitting ? "disabled" : "active:scale-[.95]"
+                } `}
+              >
+                {isSubmitting ? (
+                  <Spinner color="info" aria-label="Info spinner example" />
+                ) : (
+                  "Inscription"
+                )}
               </button>
             </div>
 
@@ -163,7 +284,7 @@ const RegisterModal: FC<RegisterModalProps> = ({
                 Connectez-vous{" "}
               </span>
             </footer>
-          </div>
+          </form>
         </div>
       </Modal>
     </React.Fragment>
