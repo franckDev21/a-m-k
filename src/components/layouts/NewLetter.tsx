@@ -13,7 +13,7 @@ const NewLetter:FC<{ className?: string }> = ({ className = '' }) => {
           <div className="flex flex-col lg:flex-row justify-between items-center">
             <div className="mb-6 lg:mr-16 lg:mb-0 text-center lg:text-left">
               <h3 className="lg:text-4xl lowercase first-letter:uppercase text-lg font-bold text-white ">
-                ENVIE DE SUIVRE L'ACTUALITE ADAA CERTIF ?
+                ENVIE DE SUIVRE L'ACTUALITE <span className="capitalize">Adaa Certif</span> ?
               </h3>
               <span className='text-white'>Soyez le 1er à recevoir les dernières actualités, nouveautés et conseils</span>
             </div>
