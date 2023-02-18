@@ -10,6 +10,7 @@ import MenuBerger from "../../uikit/MenuBerger";
 import { TbSchool } from "react-icons/tb";
 import LoginModal from "../../../pages/LoginModal";
 import useModal from "../../../hooks/useModal";
+import RegisterModal from "../../../pages/RegisterModal";
 
 interface HeaderProps {
   className?: string;
@@ -17,12 +18,25 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ className = "" }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const { show, openModal, closeModal } = useModal();
+  const { show: showOne, openModal: openModalOne, closeModal: closeModalOne } = useModal();
+  const { show: showTwo, openModal: openModalTwo, closeModal: closeModalTwo } = useModal();
+
+  const switchToRegister = () => {
+    closeModalTwo()
+    openModalOne()
+  }
+  const switchToRLogin = () => {
+    closeModalOne()
+    openModalTwo()
+  }
 
   return (
     <>
+      {/* register modal */}
+      <RegisterModal switchToRLogin={switchToRLogin} show={showOne} onClose={closeModalOne} />
+
       {/* login modal */}
-      <LoginModal show={show} onClose={closeModal} />
+      <LoginModal switchToRegister={switchToRegister} show={showTwo} onClose={closeModalTwo} />
 
       <header className={`${className}`}>
         <div className="bg-black">
@@ -116,7 +130,7 @@ const Header: FC<HeaderProps> = ({ className = "" }) => {
               className="bg-primary px-2 text-sm font-bold py-1.5"
             />
             <Button
-              onClick={openModal}
+              onClick={openModalTwo}
               defaultColor={false}
               defauldPadding={false}
               icon={<FaLock className="text-primary" />}

@@ -8,10 +8,11 @@ import { FaLock } from "react-icons/fa";
 interface LoginModalProps {
   show: boolean;
   onClick?: () => any;
+  switchToRegister?: () => any;
   onClose: () => any;
 }
 
-const LoginModal: FC<LoginModalProps> = ({ show, onClick, onClose }) => {
+const LoginModal: FC<LoginModalProps> = ({ show, onClick, onClose, switchToRegister }) => {
   return (
     <React.Fragment>
       <Modal popup size="6xl" show={show} onClose={onClose}>
@@ -54,7 +55,7 @@ const LoginModal: FC<LoginModalProps> = ({ show, onClick, onClose }) => {
             </div>
            
             <footer className="w-full pt-4 md:pt-0 md:absolute bottom-8 text-center space-x-2">
-              <span>Déjà un compte ?</span> <a href="#" className='text-primary'>Connectez-vous </a>
+              <span>Vous n’avez pas encore de compte ?</span> <span  onClick={switchToRegister} className='cursor-pointer text-primary'>Créer un compte</span>
             </footer>
           </div>
         </div>

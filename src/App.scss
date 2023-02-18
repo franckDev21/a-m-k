@@ -1,22 +1,46 @@
-
-
-.video-responsive{
+.video-responsive {
   width: 99.5% !important;
   height: auto !important;
 }
 
-video{
-  border-radius: .4rem !important;
+video {
+  border-radius: 0.4rem !important;
 }
-
 
 // slyder comments style
 .swiper-slide {
   padding-bottom: 50px;
 }
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
   width: 1rem !important;
   height: 1rem !important;
   background-color: #ffffff !important;
-  margin-left: .5rem !important;
+  margin-left: 0.5rem !important;
+}
+
+// phone number input
+
+.PhoneInput {
+  background-color: #F3F4F6 !important;
+  padding: .4rem 1rem !important;
+  input,
+  input:focus {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+// data piker
+
+.react-date-picker__wrapper{
+  border: none !important;
+}
+.react-date-picker__inputGroup{
+  // padding: .4rem !important
+  input,span{
+    background-color: transparent !important;
+    transform: translateY(-.4rem)
+  };
 }
