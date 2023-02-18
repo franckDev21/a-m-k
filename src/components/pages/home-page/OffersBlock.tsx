@@ -50,7 +50,19 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
                   <span>
                     <FaCheck className="text-green-600 mr-2 text-sm" />
                   </span>{" "}
+                  Accès : <span className="font-bold">7j/7 et 24h/24 </span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
                   Test d’entrainement : <span className="font-bold">01</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Nombre de questions : <span className="font-bold">15</span>
                 </div>
                 <div className="flex items-center space-x-2 py-2 border-b border-dashed">
                   <span>
@@ -98,7 +110,7 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
                 <div className="flex justify-center items-center space-x-1 text-base">
                   <span className="line-through">$99</span>
                   <span className="inline-block px-4 font-bold bg-indigo-200 text-indigo-600 py-1 rounded-full">
-                    80% de réduction
+                    49% de réduction
                   </span>
                 </div>
                 <span className="text-secondary text-2xl flex justify-center items-end">
@@ -127,13 +139,37 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
                   <span>
                     <FaCheck className="text-green-600 mr-2 text-sm" />
                   </span>{" "}
-                  Validité : <span className="font-bold">07 jours </span>
+                  Validité : <span className="font-bold">30 jours </span>
                 </div>
                 <div className="flex items-center space-x-2 py-2 border-b border-dashed">
                   <span>
                     <FaCheck className="text-green-600 mr-2 text-sm" />
                   </span>{" "}
-                  Test d’entrainement : <span className="font-bold">01</span>
+                  Accès : <span className="font-bold">7j/7 et 24h/24</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Test d’entrainement : <span className="font-bold">10</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Nombre de questions : <span className="font-bold">300</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Examens blancs : <span className="font-bold">09</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Nombre de questions : <span className="font-bold">1620</span>
                 </div>
                 <div className="flex items-center space-x-2 py-2 border-b border-dashed">
                   <span>
@@ -165,6 +201,18 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
                   </span>{" "}
                   Corrigé : <span className="font-bold">Oui</span>
                 </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Assistance : <span className="font-bold">Oui</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Tableau de bord : <span className="font-bold">Oui</span>
+                </div>
               </div>
             </div>
           </div>
@@ -184,9 +232,9 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
 
               <div className="flex flex-col space-y-3 justify-center items-center">
                 <div className="flex justify-center items-center space-x-1 text-base">
-                  <span className="line-through">$99</span>
+                  <span className="line-through">$200</span>
                   <span className="inline-block px-4 font-bold bg-indigo-200 text-indigo-600 py-1 rounded-full">
-                    80% de réduction
+                    65% de réduction
                   </span>
                 </div>
                 <span className="text-secondary text-2xl flex justify-center items-end">
@@ -215,13 +263,37 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
                   <span>
                     <FaCheck className="text-green-600 mr-2 text-sm" />
                   </span>{" "}
-                  Validité : <span className="font-bold">07 jours </span>
+                  Validité : <span className="font-bold">30 jours </span>
                 </div>
                 <div className="flex items-center space-x-2 py-2 border-b border-dashed">
                   <span>
                     <FaCheck className="text-green-600 mr-2 text-sm" />
                   </span>{" "}
-                  Test d’entrainement : <span className="font-bold">01</span>
+                  Accès : <span className="font-bold">7j/7 et 24h/24</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Test d’entrainement : <span className="font-bold">10</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Nombre de questions : <span className="font-bold">300</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Examens blancs : <span className="font-bold">09</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Nombre de questions : <span className="font-bold">1620</span>
                 </div>
                 <div className="flex items-center space-x-2 py-2 border-b border-dashed">
                   <span>
@@ -252,6 +324,18 @@ const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
                     <FaCheck className="text-green-600 mr-2 text-sm" />
                   </span>{" "}
                   Corrigé : <span className="font-bold">Oui</span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Assistance : <span className="font-bold inline-flex space-x-2 items-center"><span>Oui,</span> <span className="text-sm text-primary">Prioritaire</span> </span>
+                </div>
+                <div className="flex items-center space-x-2 py-2 border-b border-dashed">
+                  <span>
+                    <FaCheck className="text-green-600 mr-2 text-sm" />
+                  </span>{" "}
+                  Tableau de bord : <span className="font-bold">Oui</span>
                 </div>
               </div>
             </div>
