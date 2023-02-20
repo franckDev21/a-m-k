@@ -14,7 +14,7 @@ export const LoginSchema = Yup.object({
 export const RegisterSchema = Yup.object({
   firstname: Yup.string().max(100).required("le champ nom est obligatoire"),
   lastname: Yup.string().max(100).required("le champ prénom est obligatoire"),
-  tel: Yup.string().max(100).required("le champ téléphone est obligatoire"),
+  tel: Yup.string().max(15).required("le champ téléphone est obligatoire"),
   email: Yup.string()
     .email("Entrer une adresse mail valide ")
     .max(100)

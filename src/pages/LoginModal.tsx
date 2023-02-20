@@ -8,6 +8,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { LoginSchema } from "../utils/validatorShema";
 import { loginApi } from "../utils/testApi";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface LoginModalProps {
   show: boolean;
@@ -54,6 +55,10 @@ const LoginModal: FC<LoginModalProps> = ({
   };
 
   const toggleShowEye = () => setShowEye(!showEye);
+
+  function onChange(value: any) {
+    console.log("Captcha value:", value);
+  }
 
   return (
     <React.Fragment>
@@ -135,6 +140,13 @@ const LoginModal: FC<LoginModalProps> = ({
               <a href="#" className="text-sm text-gray-600 hover:text-primary">
                 Mot de passe oublié ?
               </a>
+              <div className="relative w-full">
+              {/* <ReCAPTCHA
+                className="absolute left-0 right-0 top-0 z-50"
+                sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                onChange={onChange}
+              /> */}
+            </div>
               <button
                 type="submit"
                 className={`mt-5 md:mt-10 bg-primary text-white w-full rounded-lg py-4 font-bold ${
@@ -148,6 +160,7 @@ const LoginModal: FC<LoginModalProps> = ({
                 )}
               </button>
             </div>
+           
 
             <footer className="w-full pt-4 md:pt-0 md:absolute bottom-8 text-center space-x-2">
               <span>Vous n’avez pas encore de compte ?</span>{" "}
