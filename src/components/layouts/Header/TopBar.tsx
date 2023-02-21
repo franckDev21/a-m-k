@@ -28,7 +28,7 @@ const TopBar = () => {
           href="#"
         />
 
-        <CartShop />
+        <CartShop className="text-white" />
       </div>
     </div>
   );

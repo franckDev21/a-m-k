@@ -1,4 +1,5 @@
 import Certification from "../models/Certification";
+import Offre from "../models/Offre";
 
 export const listOfComments = [
   {
@@ -71,3 +72,75 @@ export const listeCertifications: Certification[] = [
     ]
   }
 ]
+
+
+export const offres: Offre[] = [
+  {
+    name: 'Demo',
+    price: null,
+    reduction: null,
+    fakePrice: null,
+    description: 'Testez le PMP® Exam Simulator',
+    btnLabel: 'Profitez d’une démo',
+    features: [
+      { key: 'Validité', value: '07 jours' },
+      { key: 'Accès ', value: '7j/7 et 24h/24' },
+      { key: 'Test d’entrainement', value: '01' },
+      { key: 'Nombre de questions', value: '15' },
+      { key: 'Nombre d’essai', value: 'illimité' },
+      { key: 'Récap. en fin de test', value: 'Oui' },
+      { key: 'Explication réponse', value: 'Oui' },
+      { key: 'Vérification réponse', value: 'Oui' },
+      { key: 'Corrigé ', value: 'Oui' },
+    ],
+  },
+  {
+    name: 'PLAN MENSUEL',
+    price: 50,
+    reduction: 49,
+    fakePrice: 99,
+    description: '30 jours de préparation',
+    btnLabel: 'Commander',
+    features: [
+      { key: 'Validité', value: '30 jours' },
+      { key: 'Accès ', value: '7j/7 et 24h/24' },
+      { key: 'Test d’entrainement', value: '10' },
+      { key: 'Nombre de questions', value: '300' },
+      { key: 'Examens blancs', value: '09' },
+      { key: 'Nombre de questions', value: '1620' },
+      { key: 'Nombre d’essai', value: 'illimité' },
+      { key: 'Récap. en fin de test', value: 'Oui' },
+      { key: 'Explication réponse', value: 'Oui' },
+      { key: 'Vérification réponse', value: 'Oui' },
+      { key: 'Corrigé ', value: 'Oui' },
+      { key: 'Assistance  ', value: 'Oui' },
+      { key: 'Tableau de bord  ', value: 'Oui' },
+    ],
+    renouvellementText: '29,99 $USD en cas de renouvellement'
+  },
+  {
+    name: 'PLAN TRIMENSUEL',
+    price: 135,
+    reduction: 65,
+    fakePrice: 200,
+    description: '90 jours de préparation',
+    btnLabel: 'Commander',
+    features: [
+      { key: 'Validité', value: '30 jours' },
+      { key: 'Accès ', value: '7j/7 et 24h/24' },
+      { key: 'Test d’entrainement', value: '10' },
+      { key: 'Nombre de questions', value: '300' },
+      { key: 'Examens blancs', value: '09' },
+      { key: 'Nombre de questions', value: '1620' },
+      { key: 'Nombre d’essai', value: 'illimité' },
+      { key: 'Récap. en fin de test', value: 'Oui' },
+      { key: 'Explication réponse', value: 'Oui' },
+      { key: 'Vérification réponse', value: 'Oui' },
+      { key: 'Corrigé ', value: 'Oui' },
+      { key: 'Assistance  ', value: 'Oui', priority: true  },
+      { key: 'Tableau de bord  ', value: 'Oui'},
+    ],
+    renouvellementText: '99,99 $USD en cas de renouvellement',
+    freeForStudent: true
+  }
+];

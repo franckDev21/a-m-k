@@ -19,10 +19,10 @@ const CartShop: FC<CartShopProps> = ({ className = "" }) => {
   const toggleShow = () => setShowCart(!showCart);
 
   return (
-    <div className={`${className} relative text-white cursor-pointer`}>
+    <div id="cart" className={`${className} relative cursor-pointer`}>
       <span
         style={StyleCountNumberCart}
-        className="absolute -top-1 text-center font-bold text-white -right-2 bg-red-600  rounded-full"
+        className="absolute -top-1 text-center text-white font-bold -right-2 bg-red-600  rounded-full"
       >
         0
       </span>

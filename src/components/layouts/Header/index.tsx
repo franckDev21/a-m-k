@@ -10,6 +10,7 @@ import useModal from "../../../hooks/useModal";
 import RegisterModal from "../../../pages/RegisterModal";
 import TopBar from "./TopBar";
 import MobileNavBar from "./MobileNavBar";
+import CartShop from "../../uikit/CartShop";
 
 interface HeaderProps {
   className?: string;
@@ -91,6 +92,8 @@ const Header: FC<HeaderProps> = ({ className = "" }) => {
 
           <div className="space-x-2 hidden md:flex  items-center">
             <MenuBerger className="lg:hidden" />
+            {fixed && <div className="space-x-1 flex items-center">
+              <CartShop className="text-secondary -translate-x-3 bg-gray-200 p-1" /> | </div>}
             <Button
               defauldPadding={false}
               icon={<TbSchool className="text-2xl" />}
