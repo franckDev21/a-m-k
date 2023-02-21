@@ -76,6 +76,7 @@ export const listeCertifications: Certification[] = [
 
 export const offres: Offre[] = [
   {
+    id: 1,
     name: 'Demo',
     price: null,
     reduction: null,
@@ -95,6 +96,7 @@ export const offres: Offre[] = [
     ],
   },
   {
+    id: 2,
     name: 'PLAN MENSUEL',
     price: 50,
     reduction: 49,
@@ -119,6 +121,7 @@ export const offres: Offre[] = [
     renouvellementText: '29,99 $USD en cas de renouvellement'
   },
   {
+    id: 3,
     name: 'PLAN TRIMENSUEL',
     price: 135,
     reduction: 65,

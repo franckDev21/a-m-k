@@ -7,6 +7,7 @@ export interface featureType {
 }
 
 export default interface Offre {
+  id: number,
   name: string;
   description: string;
   price: null | number;

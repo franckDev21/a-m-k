@@ -19,6 +19,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ className = "" }) => {
   const [fixed,setFixed] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
   const { show: showOne, openModal: openModalOne, closeModal: closeModalOne } = useModal();
   const { show: showTwo, openModal: openModalTwo, closeModal: closeModalTwo } = useModal();
 
@@ -26,6 +27,7 @@ const Header: FC<HeaderProps> = ({ className = "" }) => {
     closeModalTwo()
     openModalOne()
   }
+
   const switchToRLogin = () => {
     closeModalOne()
     openModalTwo()

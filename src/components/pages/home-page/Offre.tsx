@@ -1,14 +1,19 @@
 import React, { FC } from "react";
 import { FaCheck } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 import OffreModel from "../../../models/Offre";
 
 interface OffreProps {
   className?: string;
   center?: boolean;
-  offre?: OffreModel;
+  offre: OffreModel;
 }
 
 const Offre: FC<OffreProps> = ({ className = "", center = false, offre }) => {
+
+  // to add an offer in the context store 
+  const { addToCart } = useCart();
+
   return (
     <div
       className={`border border-primary rounded-md p-4 bg-white ${className}`}
@@ -58,6 +63,7 @@ const Offre: FC<OffreProps> = ({ className = "", center = false, offre }) => {
 
         <div className="text-center relative">
           <button
+            onClick={() => addToCart(offre)}
             className={`text-white px-4 font-bold ${
               center ? "bg-tertiary" : "bg-primary"
             } rounded-md py-3 w-[80%] mx-auto block`}
