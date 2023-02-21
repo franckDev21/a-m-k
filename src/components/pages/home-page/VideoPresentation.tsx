@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 const VideoPresentation: FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <div
+      id="hero"
       className={`${className} lg:flex-row px-3 flex-col-reverse flex items-center md:space-x-5 container mx-auto mt-16`}
     >
       <ReactPlayer

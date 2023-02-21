@@ -4,7 +4,7 @@ import NavBarType from "../../layouts/NavBarType";
 
 const OffersBlock: FC<{ className?: string }> = ({ className = "" }) => {
   return (
-    <div className={`${className} bg-gray-100`}>
+    <div id="offre" className={`${className} bg-gray-100`}>
       <div className="container mx-auto pb-10 pt-16">
         <h1 className=" lg:w-[65%] mx-auto text-center text-3xl pb-5 lg:text-4xl text-transparent  bg-clip-text bg-gradient-to-r to-blue-400 from-primary text-gray-800 font-extrabold lowercase first-letter:uppercase">
           CHOISSISEZ L’OFFRE QUI CORRESPOND A VOTRE BESOIN

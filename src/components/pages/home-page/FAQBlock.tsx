@@ -5,6 +5,7 @@ import Accordeons from "./Accordeons";
 const FAQBlock: FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <div
+      id="FAQ"
       className={`${className}`}
       style={{ backgroundImage: "url(/assets/home-menu-bg-overlay.svg)" }}
     >

@@ -1,3 +1,8 @@
+.nav-link{
+  &.active{
+    @apply after:block after:absolute after:w-10 after:h-1 after:rounded-md after:bg-primary after:-bottom-1 after:left-1/2 after:-translate-x-1/2 font-bold;
+  }
+}
 
 .disabled{
   // pointer-events: none;
