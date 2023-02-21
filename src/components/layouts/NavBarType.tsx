@@ -1,37 +1,30 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
+import TypeOffreContext from "../../context/OffreTypeContext";
+import { LinkOffreType } from "../../types";
+import { linkTypeList } from "../../utils/testData";
 
 const NavBarType: FC<{ className?: string }> = ({ className = "" }) => {
-  const [links, setLinks] = useState<
-    { id: number; value: string; active: boolean }[]
-  >([
-    {
-      id: 1,
-      value: "PMP",
-      active: true,
-    },
-    {
-      id: 2,
-      value: "PSM1",
-      active: false,
-    },
-    {
-      id: 3,
-      value: "ITIL 4",
-      active: false,
-    },
-  ]);
+  const [links, setLinks] = useState<LinkOffreType[]>([]);
 
-  const toggleActive = (id: number) => {
-    let copiesLinks = links.map(link => {
-      if(link.id === id){
+  // change the type of offer
+  const { setType } = useContext(TypeOffreContext);
+
+  useEffect(() => {
+    setLinks(linkTypeList);
+  }, []);
+
+  const toggleActive = (id: number, link: LinkOffreType) => {
+    setType(link.value);
+    let copiesLinks = links.map((link) => {
+      if (link.id === id) {
         link.active = true;
         return link;
-      }else{
+      } else {
         link.active = false;
         return link;
       }
     });
-    setLinks(copiesLinks)
+    setLinks(copiesLinks);
   };
 
   return (
@@ -41,7 +34,7 @@ const NavBarType: FC<{ className?: string }> = ({ className = "" }) => {
       {links.map((link, k) => (
         <React.Fragment key={k}>
           <div
-            onClick={() => toggleActive(link.id)}
+            onClick={() => toggleActive(link.id, link)}
             className={`w-1/2 lg:max-w-max px-2 lg:px-10 border-2 border-dashed dashed-card-link ${
               link.active && "active"
             } text-center font-bold md:text-xl  cursor-pointer  py-2`}

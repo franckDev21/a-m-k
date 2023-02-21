@@ -33,6 +33,10 @@ video {
 
 .PhoneInput {
   background-color: #F3F4F6 !important;
+  &.white{
+    background-color: #fff !important;
+    border-radius: .5rem;
+  }
   padding: .4rem 1rem !important;
   input,
   input:focus {

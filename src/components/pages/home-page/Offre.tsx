@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { FaCheck } from "react-icons/fa";
+import TypeOffreContext from "../../../context/OffreTypeContext";
 import useCart from "../../../hooks/useCart";
 import OffreModel from "../../../models/Offre";
 
@@ -14,6 +15,9 @@ const Offre: FC<OffreProps> = ({ className = "", center = false, offre }) => {
   // to add an offer in the context store 
   const { addToCart } = useCart();
 
+   // type of offer
+   const { type } = useContext(TypeOffreContext);
+
   return (
     <div
       className={`border border-primary rounded-md p-4 bg-white ${className}`}
@@ -24,7 +28,7 @@ const Offre: FC<OffreProps> = ({ className = "", center = false, offre }) => {
             {offre?.name}
           </h1>
           <div className="flex flex-col justify-center items-center space-x-2 relative">
-            <span className="text-sm font-light">{offre?.description}</span>
+            <span className="text-sm font-light">{offre?.id === 1 ? `Testez le ${type}® Exam Simulator`:offre.description}</span>
             {offre?.freeForStudent && (
               <span className="  text-xs inline-block px-4 font-bold  bg-green-200 text-green-600 py-1 rounded-full">
                 Offert aux étudiants ADAA CERTIF

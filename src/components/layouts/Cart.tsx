@@ -1,5 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { PAGES } from "../../config/routes";
+import TypeOffreContext from "../../context/OffreTypeContext";
 import useCart from "../../hooks/useCart";
 import Offre from "../../models/Offre";
 
@@ -11,6 +14,9 @@ interface CartProps {
 const Cart: FC<CartProps> = ({ className = "", offers = [] }) => {
   //to delete an item in the context store
   const { deleteToCart } = useCart();
+
+  // type of offer
+  const { type } = useContext(TypeOffreContext);
 
   return (
     <div
@@ -41,9 +47,9 @@ const Cart: FC<CartProps> = ({ className = "", offers = [] }) => {
               </div>
             ))}
           </div>
-          <button className="py-2  rounded-md bg-tertiary bg-opacity-80 font-bold hover:bg-opacity-100 select-none text-white w-full">
+          <Link to={PAGES.offer(offers[0].id.toString(),type)} className="py-2 text-center inline-block rounded-md bg-tertiary bg-opacity-80 font-bold hover:bg-opacity-100 select-none text-white w-full">
             voir le panier
-          </button>
+          </Link>
         </>
       ) : (
         <>

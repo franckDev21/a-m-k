@@ -3,11 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import { PAGES } from "./config/routes";
+import Subscription from "./pages/Subscription";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path={PAGES.index} element={<Home />} />
+      <Route path={PAGES.offer(':offreId',':type')} element={<Subscription />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

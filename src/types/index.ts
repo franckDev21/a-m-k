@@ -1,4 +1,4 @@
-import Offre from "../models/Offre";
+import Offre, { typeOffre } from "../models/Offre";
 
 export interface CredentialType {
   email: string;
@@ -18,4 +18,15 @@ export interface RegisterDateType {
 export type CartContextProps = {
   carts: Offre[];
   setCarts: (Offres: Offre[]) => any;
+};
+
+export type TypeOffreContextProps = {
+  type: typeOffre;
+  setType: (type: typeOffre) => any;
+};
+
+export type LinkOffreType = {
+  id: number;
+  value: typeOffre;
+  active: boolean;
 };
