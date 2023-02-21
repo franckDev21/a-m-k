@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import Cart from "../layouts/Cart";
 
 interface CartShopProps {
   className?: string;
@@ -8,10 +9,15 @@ interface CartShopProps {
 const StyleCountNumberCart: React.CSSProperties = {
   minWidth: 15,
   minHeight: 3,
-  fontSize: 8
+  fontSize: 8,
 };
 
 const CartShop: FC<CartShopProps> = ({ className = "" }) => {
+
+  const [showCart,setShowCart] = useState(false);
+
+  const toggleShow = () => setShowCart(!showCart);
+
   return (
     <div className={`${className} relative text-white cursor-pointer`}>
       <span
@@ -20,7 +26,9 @@ const CartShop: FC<CartShopProps> = ({ className = "" }) => {
       >
         0
       </span>
-      <HiOutlineShoppingCart className="text-lg" />
+      <HiOutlineShoppingCart onClick={toggleShow} className="text-lg" />
+
+      {showCart && <Cart />}
     </div>
   );
 };

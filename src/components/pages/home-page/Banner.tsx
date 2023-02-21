@@ -22,6 +22,8 @@ const Banner = () => {
       </div>
       <div className="flex items-center space-x-6 relative z-20 mt-5 md:mt-10">
         <Button
+          isHrefLink
+          pathLink='offre'
           defauldPadding={false}
           width={400}
           icon={<GiCutDiamond />}
