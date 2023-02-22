@@ -12,6 +12,7 @@ interface ButtonProps {
   defauldPadding?: boolean;
   defaultColor?: boolean;
   onClick?: () => any;
+  positionIcon?: "left" | "right";
 }
 
 const Button: FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const Button: FC<ButtonProps> = ({
   width,
   defauldPadding = true,
   defaultColor = true,
+  positionIcon = "left",
   onClick = () => {},
 }) => {
   return !isHrefLink && !pathLink ? (
@@ -36,8 +38,16 @@ const Button: FC<ButtonProps> = ({
         defaultColor && "text-white"
       } ${className} ${rounded && "rounded"}`}
     >
-      {icon}
-      <span>{label}</span>
+      {positionIcon === "left" ? (
+        <>
+          {icon}
+          <span>{label}</span>
+        </>
+      ) : (
+        <>
+          <span>{label}</span> {icon}
+        </>
+      )}
     </button>
   ) : (
     <Link

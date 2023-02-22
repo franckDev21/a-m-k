@@ -222,9 +222,9 @@ const Subscription = () => {
           </div>
 
           <div className="w-[80%] text-center py-4">
-            <button className="px-16 py-4 bg-primary font-bold text-white rounded-md">
+            <Link to='/test/demo/PMP/' className="px-16 py-4 bg-primary font-bold text-white rounded-md">
               Commander
-            </button>
+            </Link>
           </div>
         </div>
       </div>
