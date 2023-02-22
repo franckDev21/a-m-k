@@ -5,6 +5,7 @@ import { PAGES } from "../../config/routes";
 import TypeOffreContext from "../../context/OffreTypeContext";
 import useCart from "../../hooks/useCart";
 import Offre from "../../models/Offre";
+import { getIdsWithString } from "../../utils/helper";
 
 interface CartProps {
   className?: string;
@@ -47,7 +48,7 @@ const Cart: FC<CartProps> = ({ className = "", offers = [] }) => {
               </div>
             ))}
           </div>
-          <Link to={PAGES.offer(offers[0].id.toString(),type)} className="py-2 text-center inline-block rounded-md bg-tertiary bg-opacity-80 font-bold hover:bg-opacity-100 select-none text-white w-full">
+          <Link to={PAGES.offer(getIdsWithString(offers),type)} className="py-2 text-center inline-block rounded-md bg-tertiary bg-opacity-80 font-bold hover:bg-opacity-100 select-none text-white w-full">
             voir le panier
           </Link>
         </>

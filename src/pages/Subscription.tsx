@@ -3,20 +3,31 @@ import { BsShieldCheck } from "react-icons/bs";
 import { FaLock } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import PhoneInputWithCountrySelect from "react-phone-number-input";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import MainLayout from "../components/layouts/MainLayout";
 import Offre from "../models/Offre";
-import { getOfferById } from "../utils/helper";
+import {
+  allIdsExist,
+  getIdsWithTabNumber,
+  getOffersByTabIds,
+} from "../utils/helper";
 
 const Subscription = () => {
   const [value, setValue] = useState<any>("");
-  const [offre, setOffre] = useState<Offre | null>(null);
+  const [offres, setOffres] = useState<Offre[]>([]);
 
-  const { offreId, type } = useParams();
+  const nagivite = useNavigate();
+
+  const { offreIds, type } = useParams();
 
   //we get the offer in comics
   useEffect(() => {
-    setOffre(getOfferById(parseInt(offreId?.toString() || "0", 10)) ?? null);
+    // chech if correct ids
+    if (!allIdsExist(getIdsWithTabNumber(offreIds || ""))) {
+      nagivite("/");
+    }
+
+    setOffres(getOffersByTabIds(getIdsWithTabNumber(offreIds || "")));
   }, []);
 
   return (
@@ -27,35 +38,43 @@ const Subscription = () => {
             Testez le {type}® Exam Simulator
           </h1>
 
-          <div className="border w-[80%] bg-gray-50 rounded mt-4">
+          <div className="border w-[80%] bg-gray-50 rounded mt-4 ">
             <div className="px-4 py-2 border-b">
               <h1 className="text-xl font-bold">Type d'abonnement</h1>
               <Link to="/" className="text-primary text-sm font-light">
                 Changer
               </Link>
             </div>
-            <div className="p-3 flex items-start space-x-2">
-              <div className="w-40 opacity-80 rounded text-center font-extrabold h-40 flex items-center justify-center bg-primary text-white text-3xl">
-                <span>{offre?.name}</span>
-              </div>
-              <div className="space-y-3">
-                <h4 className="flex items-center space-x-1">
-                  <span className="text-lg font-bold">Type d’abonnement :</span>
-                  <span>{offre?.name}</span>
-                </h4>
-                <h4 className="flex items-center space-x-1">
-                  <span className="text-lg font-bold">Prix :</span>
-                  <span>{offre?.price} $USD</span>
-                </h4>
-                <h4 className="flex items-center space-x-1">
-                  <span className="text-lg font-bold">Expire dans :</span>
-                  <span>7 jours </span>
-                </h4>
-                <h4 className="flex items-center space-x-1">
-                  <span className="text-lg font-bold">Description :</span>
-                  <span>{offre?.description}</span>
-                </h4>
-              </div>
+            <div className="grid gap-2">
+              {offres.map((offre) => (
+                <div key={offre.id}>
+                  <div className="p-3 flex items-start space-x-2">
+                    <div className="w-40 p-3 opacity-80 rounded text-center font-extrabold h-40 flex items-center justify-center bg-primary text-white text-2xl">
+                      <span>{offre?.name}</span>
+                    </div>
+                    <div className="space-y-3">
+                      <h4 className="flex items-center space-x-1">
+                        <span className="text-lg font-bold">
+                          Type d’abonnement :
+                        </span>
+                        <span>{offre?.name}</span>
+                      </h4>
+                      <h4 className="flex items-center space-x-1">
+                        <span className="text-lg font-bold">Prix :</span>
+                        <span>{offre?.price} $USD</span>
+                      </h4>
+                      <h4 className="flex items-center space-x-1">
+                        <span className="text-lg font-bold">Expire dans :</span>
+                        <span>7 jours </span>
+                      </h4>
+                      <h4 className="flex items-center space-x-1">
+                        <span className="text-lg font-bold">Description :</span>
+                        <span>{offre?.description}</span>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -170,22 +189,22 @@ const Subscription = () => {
                 </div>
               </div>
               <div className="space-y-2">
-                <label>
-                  Etape 2: Sélectionner votre moyen de paiement
-                </label>
+                <label>Etape 2: Sélectionner votre moyen de paiement</label>
                 <div className="overflow-hidden relative bg-white rounded-lg border w-[67%]">
                   <select className="px-6 py-4 outline-none ring-0 border-0 w-full">
-                    <option value="">Sélectionner votre moyen de paiement</option>
+                    <option value="">
+                      Sélectionner votre moyen de paiement
+                    </option>
                   </select>
                 </div>
               </div>
               <div className="space-y-2">
-                <label>
-                  Etape 3: Renseigner les informations de paiement
-                </label>
+                <label>Etape 3: Renseigner les informations de paiement</label>
                 <div className="overflow-hidden relative bg-white rounded-lg border w-[67%]">
                   <select className="px-6 py-4 outline-none ring-0 border-0 w-full">
-                    <option value="">Numéro de carte ou numéro mobile money</option>
+                    <option value="">
+                      Numéro de carte ou numéro mobile money
+                    </option>
                   </select>
                 </div>
               </div>

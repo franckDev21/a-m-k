@@ -10,7 +10,7 @@ function App() {
   return (
     <Routes>
       <Route path={PAGES.index} element={<Home />} />
-      <Route path={PAGES.offer(':offreId',':type')} element={<Subscription />} />
+      <Route path={PAGES.offer(':offreIds',':type')} element={<Subscription />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
