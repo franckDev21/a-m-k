@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 import InstructionItem from "./InstructionItem";
+import TestBlock from "./TestBlock";
 
 const InstructionsTestContent: FC<{ className?: string }> = ({
   className = "",
 }) => {
   return (
-    <div className="pt-8 overflow-x-hidden overflow-y-scroll scrollbar-cool h-[50vh]">
+    <TestBlock className="pt-8 ">
       <h2 className="text-2xl font-semibold">Instructions :</h2>
 
       <div className="space-y-2 mt-8 w-full ">
@@ -21,7 +22,7 @@ const InstructionsTestContent: FC<{ className?: string }> = ({
         <InstructionItem label="Vous pouvez terminer le test et voir vos résultats immédiatement à l'aide du bouton Arrêter." />
         <InstructionItem label="Vous pouvez terminer le test et voir vos résultats immédiatement à l'aide du bouton Arrêter." />
       </div>
-    </div>
+    </TestBlock>
   );
 };
 

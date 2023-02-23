@@ -30,3 +30,12 @@ export type LinkOffreType = {
   value: typeOffre;
   active: boolean;
 };
+
+export type StateType = 'OFF'|'START'|'END'|'DONE'|'REVIEW'
+
+export type StateTestProps = {
+  state: StateType,
+  fullScreen: boolean,
+  setState: (value: StateType) => any,
+  toggleShowAllScreen: () => any
+}
