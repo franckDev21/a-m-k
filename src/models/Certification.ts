@@ -1,5 +1,5 @@
 export default interface Certification {
-  id: number,
+  id: number;
   logo: string;
   title: string;
   level: string;

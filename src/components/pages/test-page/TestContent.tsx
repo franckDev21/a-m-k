@@ -16,7 +16,7 @@ const TestContent: FC<{ className?: string }> = ({ className = '' }) => {
       {/* instructions list */}
       {state === 'OFF' && <InstructionsTestContent/>}
 
-      {state === 'START' && <QuestionsBlock />}
+      {(state === 'START' || state === 'DONE') && <QuestionsBlock />}
       {/* footer */}
       <TestFooter />
     </div>

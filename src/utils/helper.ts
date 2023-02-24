@@ -1,4 +1,5 @@
 import Offre from "../models/Offre";
+import { Question } from "../models/Question";
 import { offres } from "./testData";
 
 export const getOfferById = (id: number): Offre | undefined => {
@@ -34,5 +35,13 @@ export const allIdsExist = (tabIds: number[]) => {
     }
   })
   return allExist
+}
 
+export const isLastQuestion = (allQuestions: Question[],currentActiveQuestion: Question) => {
+  // on verifie si la question active n'est pas la derniere de la liste
+  let indexOfCurrentQuetion = allQuestions.indexOf(currentActiveQuestion)
+  if(indexOfCurrentQuetion === allQuestions.length - 1){
+    return true
+  }
+  return false
 }

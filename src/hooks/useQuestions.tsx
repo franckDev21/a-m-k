@@ -1,0 +1,104 @@
+import { useContext, useEffect, useState } from "react";
+import QuestionTestContext from "../context/QuestionTestContext";
+import { Question } from "../models/Question";
+import { isLastQuestion } from "../utils/helper";
+import useStateTest from "./useStateTest";
+
+const useQuestions = () => {
+  const {
+    questions,
+    setQuestions,
+    currentActiveQuestion,
+    setCurrentActiveQuestion,
+    currentActiveResponse,
+    setCurrentActiveResponse,
+    showQuestionModal,
+    setShowQuestionModal,
+    countQuestion,
+    setCountQuestion,
+  } = useContext(QuestionTestContext);
+
+  // 'OFF' | 'START' | 'DONE' | 'REVIEW'
+  const { updateState, state } = useStateTest()
+
+  const [totalQuestion,setTotalQuestion] = useState(0)
+
+  const updateQuestions = (questions: Question[]) => {
+    setQuestions(questions);
+    setCurrentActiveQuestion(questions[0])
+    setTotalQuestion(questions.length)
+  };
+
+  const updateCurrentQuestion =  (question: Question) => {
+    setCurrentActiveQuestion(question)
+  }
+
+  const desactiveQuestion = () => {
+    if(currentActiveQuestion){
+      setCurrentActiveQuestion({...currentActiveQuestion,time_is_over: true})
+    }
+  }
+
+  const activeQuestion = () => {
+    console.log('ici');
+    
+    if(currentActiveQuestion){
+      console.log('dedant');
+      setCurrentActiveQuestion({...currentActiveQuestion,time_is_over: false})
+    }
+  }
+
+  const updateCurrentResponse =  (response: string) => {
+    setCurrentActiveResponse(response)
+  }
+
+  const next = () => {
+
+    if(state !== 'DONE'){
+      // on vide la reponse en state
+      setCurrentActiveResponse('')
+    }
+
+    // a chaque fois on verifie si la question active n'est pas la derniere 
+    if(!isLastQuestion(questions,currentActiveQuestion as Question)){
+      let index = questions.indexOf(currentActiveQuestion as Question) + 1
+      setCountQuestion(countQuestion+1)
+
+      if(!isLastQuestion(questions,currentActiveQuestion as Question)) updateState('DONE')
+
+      setCurrentActiveQuestion(questions[index])
+    }else{
+      if(state === 'OFF'){
+        updateState('START')
+      }else if(state === 'START'){
+        updateState('DONE')
+      }else if(state === 'DONE'){
+        // on ouvre la modal d'avertissement de fin 
+        openModal()
+      }
+    }
+  }
+
+  const closeModal = () => setShowQuestionModal(false)
+  const openModal = () => setShowQuestionModal(true)
+
+
+  return {
+    questions,
+    updateQuestions,
+    totalQuestion,
+    updateCurrentQuestion,
+    currentQuestion: currentActiveQuestion,
+    updateCurrentResponse,
+    currentResponse: currentActiveResponse,
+    next,
+    showEndQuestionModal: showQuestionModal,
+    closeEndQuestionModal: closeModal,
+    openEndQuestionModal: openModal,
+    countQuestion,
+    desactiveQuestion,
+    activeQuestion,
+  };
+};
+
+export default useQuestions;

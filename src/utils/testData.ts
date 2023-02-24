@@ -1,5 +1,6 @@
 import Certification from "../models/Certification";
 import Offre from "../models/Offre";
+import { Question } from "../models/Question";
 import { LinkOffreType } from "../types";
 
 export const listOfComments = [
@@ -169,3 +170,46 @@ export const linkTypeList: LinkOffreType[] = [
     active: false,
   },
 ];
+
+
+export const questions: Question[] = [
+  {
+    id: 1,
+    title: 'The Product Backlog is ordered by',
+    timer: 36,
+    response_type: 'SINGLE',
+    response: 'C) Least valuable items at the top to most valuable at the bottom.',
+    responses: null,
+    suggestions: [
+      'A) Size, where small items are at the top and large items are at the bottom',
+      'B) Risk, where safer items are at the top, and riskier items are at the bottom',
+      'C) Least valuable items at the top to most valuable at the bottom.',
+      'D) Items are randomly arranged.',
+      'E) Whatever is deemed most appropriate by the Product Owner.'
+    ],
+    test_id: 1
+  },
+  {
+    id: 2,
+    title: 'Quelles opérations conduisent au résultat 4  ?',
+    sub_title: 'Choisissez la ou les bonnes réponses',
+    timer: 14,
+    response_type: 'SINGLE',
+    response: null,
+    responses: [
+      '12-4*3+4',
+      '2 x 2',
+      '√(16)'
+    ],
+    suggestions: [
+      '25-18',
+      '2 X 2',
+      '44-4',
+      '14-4*3',
+      '√(16)',
+      '55-12/4',
+      '12-4*3+4'
+    ],
+    test_id: 1
+  }
+]

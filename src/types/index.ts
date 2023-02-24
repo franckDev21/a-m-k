@@ -1,4 +1,5 @@
 import Offre, { typeOffre } from "../models/Offre";
+import { Question } from "../models/Question";
 
 export interface CredentialType {
   email: string;
@@ -38,4 +39,17 @@ export type StateTestProps = {
   fullScreen: boolean,
   setState: (value: StateType) => any,
   toggleShowAllScreen: () => any
+}
+
+export type QuestionContextProps = {
+  questions: Question[],
+  currentActiveQuestion: Question|null,
+  currentActiveResponse: string|null,
+  setQuestions: (questions: Question[]) => any,
+  setCurrentActiveQuestion: (question: Question) => any,
+  setCurrentActiveResponse: (value: string) => any,
+  showQuestionModal: boolean,
+  setShowQuestionModal: (value: boolean) => any,
+  countQuestion: number,
+  setCountQuestion: (value: number) => any,
 }

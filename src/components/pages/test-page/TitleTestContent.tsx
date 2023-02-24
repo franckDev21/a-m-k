@@ -1,14 +1,17 @@
 import React, { FC } from "react";
+import useQuestions from "../../../hooks/useQuestions";
 import useStateTest from "../../../hooks/useStateTest";
 import TimerCard from "./TimerCard";
 
 const TitleTestContent: FC<{ className?: string }> = ({ className = "" }) => {
   const { state } = useStateTest();
 
+  const { currentQuestion } = useQuestions();
+
   return (
-    <div className={`${className} border-b pb-2 border-b-gray-100`}>
+    <div className={`${className} ${currentQuestion?.time_is_over && 'disabled pointer-events-none select-none'} border-b pb-2 border-b-gray-100`}>
       <h1
-        className={`font-bold ${state === "START" ? "text-2xl" : "text-3xl "}`}
+        className={`font-bold ${(state === "START" || state === 'DONE') ? "text-2xl" : "text-3xl "}`}
       >
         TEST D’ENTRAINEMENT N°1
       </h1>
@@ -18,7 +21,7 @@ const TitleTestContent: FC<{ className?: string }> = ({ className = "" }) => {
           nécessaire pour réussir
         </p>
       )}
-      {state === "START" && <TimerCard />}
+      {(state === "START" || state === 'DONE') && <TimerCard />}
     </div>
   );
 };

@@ -1,20 +1,30 @@
 import React, { FC } from "react";
 import { MdTimer } from "react-icons/md";
+import { useTimer } from "react-timer-hook";
+import useQuestions from "../../../hooks/useQuestions";
 
 interface TimerCardProps {
   className?: string;
 }
 
 const TimerCard: FC<TimerCardProps> = ({ className = "" }) => {
+
+  const { questions, countQuestion, desactiveQuestion, currentQuestion } = useQuestions()
+
+  const time = new Date(Date.now());
+  time.setSeconds(time.getSeconds() + (currentQuestion?.timer as number));
+
+  const { minutes, seconds } = useTimer({expiryTimestamp: time, onExpire: () => desactiveQuestion()});
+
   return (
     <div
       className={`${className} flex items-center py-2 px-10 w-[99%] rounded-md mx-auto bg-yellow-400 text-gray-500 justify-between`}
     >
-      <h4 className="text-white font-bold">Question 25 sur 25</h4>
+      <h4 className="text-white font-bold">Question {countQuestion} sur {questions.length}</h4>
       <div className="space-x-2 flex items-center">
         <span className="bg-white px-3 py-2 space-x-2 uppercase inline-flex items-center">
           <MdTimer className="text-gray-800 text-lg" />
-          <span>18:49</span>
+          <span>{minutes}:{seconds}</span>
         </span>
         <span className="bg-white px-3 py-2 uppercase inline-block">
           terminer le test
