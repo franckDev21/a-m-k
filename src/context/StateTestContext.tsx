@@ -5,18 +5,20 @@ const StateTestContext = createContext<StateTestProps>({
   state: "OFF",
   fullScreen: false,
   setState: (value) => {},
-  toggleShowAllScreen: () => {}
+  toggleShowAllScreen: () => {},
 });
 
-export const StateTestProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [state, setState] = useState<StateType>('OFF');
-  const [fullScreen,setFullScreen] = useState(false)
+export const StateTestProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [state, setState] = useState<StateType>("OFF");
+  const [fullScreen, setFullScreen] = useState(false);
 
   const contextValue: StateTestProps = {
     state,
     fullScreen,
     toggleShowAllScreen: () => {
-      setFullScreen(!fullScreen)
+      setFullScreen(!fullScreen);
     },
     setState: (value) => {
       setState(value);

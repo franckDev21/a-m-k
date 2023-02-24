@@ -176,7 +176,7 @@ export const questions: Question[] = [
   {
     id: 1,
     title: 'The Product Backlog is ordered by',
-    timer: 36,
+    timer: 9,
     response_type: 'SINGLE',
     response: 'C) Least valuable items at the top to most valuable at the bottom.',
     responses: null,
@@ -193,7 +193,7 @@ export const questions: Question[] = [
     id: 2,
     title: 'Quelles opérations conduisent au résultat 4  ?',
     sub_title: 'Choisissez la ou les bonnes réponses',
-    timer: 14,
+    timer: 25,
     response_type: 'SINGLE',
     response: null,
     responses: [

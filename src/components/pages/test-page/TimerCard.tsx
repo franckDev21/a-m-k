@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { MdTimer } from "react-icons/md";
-import { useTimer } from "react-timer-hook";
 import useQuestions from "../../../hooks/useQuestions";
+import useTimer from "../../../hooks/useTimer";
 
 interface TimerCardProps {
   className?: string;
@@ -9,12 +9,9 @@ interface TimerCardProps {
 
 const TimerCard: FC<TimerCardProps> = ({ className = "" }) => {
 
-  const { questions, countQuestion, desactiveQuestion, currentQuestion } = useQuestions()
+  const { questions, countQuestion } = useQuestions()
 
-  const time = new Date(Date.now());
-  time.setSeconds(time.getSeconds() + (currentQuestion?.timer as number));
-
-  const { minutes, seconds } = useTimer({expiryTimestamp: time, onExpire: () => desactiveQuestion()});
+  const { hours, minutes, seconds } = useTimer()
 
   return (
     <div
@@ -24,7 +21,7 @@ const TimerCard: FC<TimerCardProps> = ({ className = "" }) => {
       <div className="space-x-2 flex items-center">
         <span className="bg-white px-3 py-2 space-x-2 uppercase inline-flex items-center">
           <MdTimer className="text-gray-800 text-lg" />
-          <span>{minutes}:{seconds}</span>
+          {hours}:{minutes}:{seconds}
         </span>
         <span className="bg-white px-3 py-2 uppercase inline-block">
           terminer le test

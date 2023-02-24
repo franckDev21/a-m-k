@@ -5,8 +5,10 @@ import { QuestionContextProps } from "../types";
 const QuestionTestContext = createContext<QuestionContextProps>({
   questions: [],
   currentActiveQuestion: null,
+  refCurrentActiveQuestion: null,
   setQuestions: () => {},
   setCurrentActiveQuestion: () => {},
+  setRefCurrentActiveQuestion: () => {},
   currentActiveResponse: null,
   setCurrentActiveResponse: () => {},
   showQuestionModal: false,
@@ -19,6 +21,8 @@ export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) 
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [currentActiveQuestion, setCurrentActiveQuestion] =
     useState<Question | null>(null);
+  const [refCurrentActiveQuestion, setRefCurrentActiveQuestion] =
+    useState<Question | null>(null);
   const [currentActiveResponse, setCurrentActiveResponse] =
     useState<string>("");
   const [showModal,setShowModal] = useState(false)
@@ -28,8 +32,10 @@ export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) 
     questions: allQuestions,
     setQuestions: (questions) => setAllQuestions(questions),
     currentActiveQuestion,
+    refCurrentActiveQuestion,
     currentActiveResponse,
     setCurrentActiveQuestion: (question) => setCurrentActiveQuestion(question),
+    setRefCurrentActiveQuestion: (question) => setRefCurrentActiveQuestion(question),
     setCurrentActiveResponse: (value) => setCurrentActiveResponse(value),
     showQuestionModal: showModal,
     setShowQuestionModal: (value) => setShowModal(value),

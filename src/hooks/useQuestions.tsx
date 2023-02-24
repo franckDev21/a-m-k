@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import QuestionTestContext from "../context/QuestionTestContext";
 import { Question } from "../models/Question";
 import { isLastQuestion } from "../utils/helper";
@@ -9,7 +9,9 @@ const useQuestions = () => {
     questions,
     setQuestions,
     currentActiveQuestion,
+    refCurrentActiveQuestion,
     setCurrentActiveQuestion,
+    setRefCurrentActiveQuestion,
     currentActiveResponse,
     setCurrentActiveResponse,
     showQuestionModal,
@@ -26,6 +28,7 @@ const useQuestions = () => {
   const updateQuestions = (questions: Question[]) => {
     setQuestions(questions);
     setCurrentActiveQuestion(questions[0])
+    setRefCurrentActiveQuestion(questions[0])
     setTotalQuestion(questions.length)
   };
 
@@ -40,10 +43,7 @@ const useQuestions = () => {
   }
 
   const activeQuestion = () => {
-    console.log('ici');
-    
     if(currentActiveQuestion){
-      console.log('dedant');
       setCurrentActiveQuestion({...currentActiveQuestion,time_is_over: false})
     }
   }
@@ -60,14 +60,20 @@ const useQuestions = () => {
     }
 
     // a chaque fois on verifie si la question active n'est pas la derniere 
-    if(!isLastQuestion(questions,currentActiveQuestion as Question)){
-      let index = questions.indexOf(currentActiveQuestion as Question) + 1
+    if(!isLastQuestion(questions,refCurrentActiveQuestion as Question)){
+      let index = questions.indexOf(refCurrentActiveQuestion as Question) + 1
       setCountQuestion(countQuestion+1)
 
-      if(!isLastQuestion(questions,currentActiveQuestion as Question)) updateState('DONE')
+      if(!isLastQuestion(questions,refCurrentActiveQuestion as Question)) updateState('DONE')
 
       setCurrentActiveQuestion(questions[index])
+      setRefCurrentActiveQuestion(questions[index])
+
+      // voir la question courante
+      console.log(questions[index]);
     }else{
+      console.log('---------- yo ------------');
+      
       if(state === 'OFF'){
         updateState('START')
       }else if(state === 'START'){
@@ -89,6 +95,7 @@ const useQuestions = () => {
     totalQuestion,
     updateCurrentQuestion,
     currentQuestion: currentActiveQuestion,
+    refCurrentQuestion: refCurrentActiveQuestion,
     updateCurrentResponse,
     currentResponse: currentActiveResponse,
     next,

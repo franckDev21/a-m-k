@@ -43,10 +43,12 @@ export type StateTestProps = {
 
 export type QuestionContextProps = {
   questions: Question[],
+  refCurrentActiveQuestion: Question|null,
   currentActiveQuestion: Question|null,
   currentActiveResponse: string|null,
   setQuestions: (questions: Question[]) => any,
   setCurrentActiveQuestion: (question: Question) => any,
+  setRefCurrentActiveQuestion: (question: Question) => any,
   setCurrentActiveResponse: (value: string) => any,
   showQuestionModal: boolean,
   setShowQuestionModal: (value: boolean) => any,
