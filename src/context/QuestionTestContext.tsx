@@ -15,6 +15,8 @@ const QuestionTestContext = createContext<QuestionContextProps>({
   setShowQuestionModal: () => {},
   countQuestion: 1,
   setCountQuestion: () => {},
+  stopTestQuestion: false,
+  setStopTestQuestion: () => {}
 });
 
 export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -27,6 +29,7 @@ export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) 
     useState<string>("");
   const [showModal,setShowModal] = useState(false)
   const [countQuestion,setCountQuestion] = useState(1)
+  const [stopTestQuestion,setStopTestQuestion] = useState(false)
 
   const contextValue: QuestionContextProps = {
     questions: allQuestions,
@@ -40,7 +43,9 @@ export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) 
     showQuestionModal: showModal,
     setShowQuestionModal: (value) => setShowModal(value),
     countQuestion,
-    setCountQuestion: (value) => setCountQuestion(value)
+    setCountQuestion: (value) => setCountQuestion(value),
+    stopTestQuestion,
+    setStopTestQuestion: (value) => setStopTestQuestion(value)
   };
 
   return (

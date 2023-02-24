@@ -1,12 +1,21 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FaAngleDown } from "react-icons/fa";
 import useStateTest from "../../../hooks/useStateTest";
+import Test from "../../../models/Test";
+import { getAllTest } from "../../../utils/helper";
+import { tests } from "../../../utils/testData";
+import Accordeon from "./Accordeon";
 import TestItem from "./TestItem";
 
 const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
-
   const { toggleShow, fullScreen } = useStateTest();
+  const [testTrainings,setTestTrainings] = useState<Test[]>([])
+  const [testExams,setTestExams] = useState<Test[]>([])
+
+  useEffect(()=>{
+    setTestTrainings(getAllTest('TRAINING',tests))
+    setTestExams(getAllTest('EXAM',tests));
+  },[])
 
   return (
     <div
@@ -23,35 +32,17 @@ const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
       </header>
 
       {/* accordeon */}
-      <div className="">
-        <header className="space-x-2 cursor-pointer font-bold text-gray-600 px-2 bg-gray-200 rounded-t-sm py-2 justify-between items-center flex text-lg">
-          <h1>Tests d’entrainement</h1>
-          <FaAngleDown className="text-xl" />
-        </header>
-        <div className=" px-4 py-6 space-y-3">
-          <TestItem active label="Test d’entrainement N°1" />
-          <TestItem label="Test d’entrainement N°1" />
-          <TestItem label="Test d’entrainement N°2" />
-          <TestItem label="Test d’entrainement N°3" />
-          <TestItem label="Test d’entrainement N°4" />
-          <TestItem label="Test d’entrainement N°5" />
-          <TestItem label="Test d’entrainement N°6" />
-        </div>
-      </div>
+      <Accordeon className="mb-4" title="Tests d’entrainement">
+        {testTrainings.map((test,key) => (
+          <TestItem key={key} active={key === 0} label={test.label} />
+        ))}
+      </Accordeon>
 
-      <div className="">
-        <header className="space-x-2 cursor-pointer font-bold text-gray-600 px-2 bg-gray-200 rounded-t-sm py-2 justify-between items-center flex text-lg">
-          <h1>Tests d’examens</h1>
-          <FaAngleDown className="text-xl" />
-        </header>
-        <div className=" px-4 py-6 space-y-4">
-          <TestItem active label="Test d’entrainement N°1" />
-          <TestItem label="Test d’entrainement N°1" />
-          <TestItem label="Test d’entrainement N°2" />
-          <TestItem label="Test d’entrainement N°3" />
-          <TestItem label="Test d’entrainement N°4" />
-        </div>
-      </div>
+      <Accordeon title="Tests d’examens">
+        {testExams.map((test,key) => (
+          <TestItem key={key} active={key === 0} label={test.label} />
+        ))}
+      </Accordeon>
     </div>
   );
 };

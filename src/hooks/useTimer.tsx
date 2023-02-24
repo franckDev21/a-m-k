@@ -4,7 +4,7 @@ import useQuestions from "./useQuestions";
 const useTimer = () => {
 
   const [secondes,setSeconds] = useState(0)
-  const { currentQuestion, desactiveQuestion, refCurrentQuestion} = useQuestions()
+  const { stopTestQuestion ,currentQuestion, desactiveQuestion, refCurrentQuestion} = useQuestions()
 
   const convertToTime = (p_seconds: number) => {
     if (p_seconds >= 3600) {
@@ -49,10 +49,10 @@ const useTimer = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('call-hort condition');
-      
       if(secondes >= 1){
-        setSeconds(s => s - 1)
+        if(!stopTestQuestion){
+          setSeconds(s => s - 1)
+        }
       }else{
         clearInterval(interval)
         desactiveQuestion()
@@ -60,7 +60,7 @@ const useTimer = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [secondes]);
+  }, [secondes,stopTestQuestion]);
 
   useEffect(() => {      
       setSeconds(currentQuestion?.timer as number)

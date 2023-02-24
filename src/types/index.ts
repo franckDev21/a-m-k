@@ -1,5 +1,6 @@
 import Offre, { typeOffre } from "../models/Offre";
 import { Question } from "../models/Question";
+import Test from "../models/Test";
 
 export interface CredentialType {
   email: string;
@@ -37,8 +38,16 @@ export type StateType = 'OFF'|'START'|'END'|'DONE'|'REVIEW'
 export type StateTestProps = {
   state: StateType,
   fullScreen: boolean,
+  trainingTests: Test[],
+  examTests: Test[],
+  setTrainingTests: (tests: Test[]) => any,
+  setExamTests: (tests: Test[]) => any,
   setState: (value: StateType) => any,
-  toggleShowAllScreen: () => any
+  toggleShowAllScreen: () => any,
+  currentActiveTrainingTest: Test|null,
+  currentActiveExamTest: Test|null,
+  setCurrentActiveTrainingTest: (test: Test) => any,
+  setCurrentActiveExamTest: (test: Test) => any
 }
 
 export type QuestionContextProps = {
@@ -53,5 +62,7 @@ export type QuestionContextProps = {
   showQuestionModal: boolean,
   setShowQuestionModal: (value: boolean) => any,
   countQuestion: number,
+  stopTestQuestion: boolean,
+  setStopTestQuestion: (value: boolean) => any,
   setCountQuestion: (value: number) => any,
 }

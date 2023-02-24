@@ -18,6 +18,8 @@ const useQuestions = () => {
     setShowQuestionModal,
     countQuestion,
     setCountQuestion,
+    stopTestQuestion,
+    setStopTestQuestion
   } = useContext(QuestionTestContext);
 
   // 'OFF' | 'START' | 'DONE' | 'REVIEW'
@@ -38,8 +40,26 @@ const useQuestions = () => {
 
   const desactiveQuestion = () => {
     if(currentActiveQuestion){
+      activeStopTest() // stop timer
       setCurrentActiveQuestion({...currentActiveQuestion,time_is_over: true})
     }
+  }
+
+  const toggleActiveQuestion = () => {
+    console.log('--click--');
+    
+    if(currentActiveQuestion){
+      toggleStopTest() // toggle timer
+      setCurrentActiveQuestion({...currentActiveQuestion,time_is_over: !currentActiveQuestion.time_is_over})
+    }
+  }
+
+  const toggleStopTest = () => {
+    setStopTestQuestion(!stopTestQuestion)
+  }
+
+  const activeStopTest = () => {
+    setStopTestQuestion(true)
   }
 
   const activeQuestion = () => {
@@ -68,12 +88,7 @@ const useQuestions = () => {
 
       setCurrentActiveQuestion(questions[index])
       setRefCurrentActiveQuestion(questions[index])
-
-      // voir la question courante
-      console.log(questions[index]);
-    }else{
-      console.log('---------- yo ------------');
-      
+    }else{      
       if(state === 'OFF'){
         updateState('START')
       }else if(state === 'START'){
@@ -105,6 +120,9 @@ const useQuestions = () => {
     countQuestion,
     desactiveQuestion,
     activeQuestion,
+    toggleActiveQuestion,
+    toggleStopTest,
+    stopTestQuestion
   };
 };
 

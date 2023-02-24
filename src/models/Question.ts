@@ -11,5 +11,5 @@ export interface Question {
 
   // time_is_over n'est pas une props du backend , cette prop
   // nous permet de connaitre si le temps de reponse d'une question est écoulé ou pas !
-  time_is_over?: boolean;
+  time_is_over: boolean;
 }

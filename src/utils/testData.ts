@@ -1,6 +1,7 @@
 import Certification from "../models/Certification";
 import Offre from "../models/Offre";
 import { Question } from "../models/Question";
+import Test from "../models/Test";
 import { LinkOffreType } from "../types";
 
 export const listOfComments = [
@@ -187,7 +188,8 @@ export const questions: Question[] = [
       'D) Items are randomly arranged.',
       'E) Whatever is deemed most appropriate by the Product Owner.'
     ],
-    test_id: 1
+    test_id: 1,
+    time_is_over: false
   },
   {
     id: 2,
@@ -210,6 +212,76 @@ export const questions: Question[] = [
       '55-12/4',
       '12-4*3+4'
     ],
-    test_id: 1
+    test_id: 1,
+    time_is_over: false
   }
+]
+
+export const tests: Test[] = [
+  {
+    id: 1,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°1",
+    certification_id: 1
+  },
+  {
+    id: 2,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°2",
+    certification_id: 1
+  },
+  {
+    id: 3,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°3",
+    certification_id: 1
+  },
+  {
+    id: 4,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°4",
+    certification_id: 1
+  },
+  {
+    id: 5,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°5",
+    certification_id: 1
+  },
+  {
+    id: 6,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°6",
+    certification_id: 1
+  },
+  {
+    id: 7,
+    type: 'TRAINING',
+    label: "Test d’entrainement N°7",
+    certification_id: 1
+  },
+  {
+    id: 8,
+    type: 'EXAM',
+    label: "Test d’examen N°1",
+    certification_id: 1
+  },
+  {
+    id: 9,
+    type: 'EXAM',
+    label: "Test d’examen N°2",
+    certification_id: 1
+  },
+  {
+    id: 10,
+    type: 'EXAM',
+    label: "Test d’examen N°3",
+    certification_id: 1
+  },
+  {
+    id: 11,
+    type: 'EXAM',
+    label: "Test d’examen N°4",
+    certification_id: 1
+  },
 ]

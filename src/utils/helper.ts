@@ -1,5 +1,6 @@
 import Offre from "../models/Offre";
 import { Question } from "../models/Question";
+import Test from "../models/Test";
 import { offres } from "./testData";
 
 export const getOfferById = (id: number): Offre | undefined => {
@@ -44,4 +45,9 @@ export const isLastQuestion = (allQuestions: Question[],currentActiveQuestion: Q
     return true
   }
   return false
+}
+
+export const getAllTest = (type: "TRAINING" | "EXAM", tests: Test[]): Test[] => {
+  if(type === 'EXAM') return tests.filter(test => test.type === 'EXAM')
+  return tests.filter(test => test.type === 'TRAINING')
 }
