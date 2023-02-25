@@ -23,7 +23,7 @@ const QuestionsBlock: FC<QuestionsBlockProps> = ({ className = '' }) => {
     currentResponse,
     showEndQuestionModal,
     closeEndQuestionModal,
-    desactiveQuestion,
+    desactiveQuestion, // TODO: activer si le boss dis oui
     updateRefQuestions
   } = useQuestions();
 
@@ -52,7 +52,9 @@ const QuestionsBlock: FC<QuestionsBlockProps> = ({ className = '' }) => {
             </header>
 
             <div className={`mt-5 ${currentQuestion?.time_is_over && 'disabled pointer-events-none select-none'} space-y-4 ${currentQuestion?.id !== question.id && 'hidden'}`}>
-              {question.suggestions.map((suggestion,k) => <QuestionItem onClick={desactiveQuestion} active={suggestion === currentResponse} key={k} label={suggestion} />)}
+              {/* desactivation de la fonction 1 essai */}
+              {/* {question.suggestions.map((suggestion,k) => <QuestionItem onClick={desactiveQuestion} active={suggestion === currentResponse} key={k} label={suggestion} />)} */}
+              {question.suggestions.map((suggestion,k) => <QuestionItem  active={suggestion === currentResponse} key={k} label={suggestion} />)}
             </div>
           </Fragment>
         ))}

@@ -21,13 +21,13 @@ const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
     updateExamTests,
     updateTrainingTests,
     setCurrentActiveTest,
+    updateState
   } = useStateTest();
 
   const updateStoreQuestion  = (test: Test) => {
     setCurrentActiveTest(test)
-    updateQuestions(getQuestionsByTestId(test.id,refQuestions))    
-
-    console.log(getQuestionsByTestId(test.id,refQuestions),refQuestions);
+    updateQuestions(getQuestionsByTestId(test.id,refQuestions))
+    updateState('OFF')
   }
 
   useEffect(() => {
