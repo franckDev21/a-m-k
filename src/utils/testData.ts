@@ -416,66 +416,77 @@ export const tests: Test[] = [
     id: 1,
     type: 'TRAINING',
     label: "Test d’entrainement N°1",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "2 questions|2 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   {
     id: 2,
     type: 'TRAINING',
     label: "Test d’entrainement N°2",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "56 questions|33 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   {
     id: 3,
     type: 'TRAINING',
     label: "Test d’entrainement N°3",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   {
     id: 4,
     type: 'TRAINING',
     label: "Test d’entrainement N°4",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   // {
   //   id: 5,
   //   type: 'TRAINING',
   //   label: "Test d’entrainement N°5",
-  //   certification_id: 1
+  //   certification_id: 1,
+  // sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   // },
   // {
   //   id: 6,
   //   type: 'TRAINING',
   //   label: "Test d’entrainement N°6",
-  //   certification_id: 1
+  //   certification_id: 1,
+  // sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   // },
   // {
   //   id: 7,
   //   type: 'TRAINING',
   //   label: "Test d’entrainement N°7",
-  //   certification_id: 1
+  //   certification_id: 1,
+  // sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   // },
   {
     id: 8,
     type: 'EXAM',
     label: "Test d’examen N°1",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   {
     id: 9,
     type: 'EXAM',
     label: "Test d’examen N°2",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   {
     id: 10,
     type: 'EXAM',
     label: "Test d’examen N°3",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
   {
     id: 11,
     type: 'EXAM',
     label: "Test d’examen N°4",
-    certification_id: 1
+    certification_id: 1,
+    sub_title: "25 questions|25 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir"
   },
 ]

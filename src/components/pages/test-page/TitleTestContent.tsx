@@ -18,8 +18,7 @@ const TitleTestContent: FC<{ className?: string }> = ({ className = "" }) => {
       </h1>
       {state === "OFF" && (
         <p className="text-lg">
-          25 questions|25 minutes | Un taux de réponses correctes de 85 % est
-          nécessaire pour réussir
+          {currentActiveTest?.sub_title}
         </p>
       )}
       {(state === "START" || state === 'DONE') && <TimerCard />}
