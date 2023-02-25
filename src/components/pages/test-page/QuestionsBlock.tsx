@@ -2,7 +2,6 @@ import React, { FC, Fragment, useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import useQuestions from "../../../hooks/useQuestions";
 import useStateTest from "../../../hooks/useStateTest";
-import { Question } from "../../../models/Question";
 import { getQuestionsByTestId } from "../../../utils/helper";
 import { questions as dataQuestions } from "../../../utils/testData";
 import QuestionEndModal from "./QuestionEndModal";

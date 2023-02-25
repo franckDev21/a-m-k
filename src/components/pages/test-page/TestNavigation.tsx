@@ -10,7 +10,7 @@ import TestItem from "./TestItem";
 
 const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
 
-  const { updateQuestions, questions, refQuestions } = useQuestions()
+  const { updateQuestions, refQuestions } = useQuestions()
 
   const {
     toggleShow,
