@@ -3,6 +3,7 @@ import { AiFillStar } from "react-icons/ai";
 import useQuestions from "../../../hooks/useQuestions";
 import useStateTest from "../../../hooks/useStateTest";
 import { Question } from "../../../models/Question";
+import { getQuestionsByTestId } from "../../../utils/helper";
 import { questions as dataQuestions } from "../../../utils/testData";
 import QuestionEndModal from "./QuestionEndModal";
 import QuestionItem from "./QuestionItem";
@@ -14,6 +15,8 @@ interface QuestionsBlockProps {
 
 const QuestionsBlock: FC<QuestionsBlockProps> = ({ className = '' }) => {
 
+  const { currentActiveTest } = useStateTest()
+
   const {
     questions,
     updateQuestions,
@@ -21,13 +24,15 @@ const QuestionsBlock: FC<QuestionsBlockProps> = ({ className = '' }) => {
     currentResponse,
     showEndQuestionModal,
     closeEndQuestionModal,
-    desactiveQuestion
+    desactiveQuestion,
+    updateRefQuestions
   } = useQuestions();
 
   useEffect(() => {
     // on prends les datas de l'api
     // on met a jour le store
-    updateQuestions(dataQuestions)    
+    updateQuestions(getQuestionsByTestId((currentActiveTest?.id || 1),dataQuestions))
+    updateRefQuestions(dataQuestions)
   }, []);
 
   return (

@@ -13,26 +13,22 @@ const useStateTest = () => {
     trainingTests,
     setExamTests,
     setTrainingTests,
-    currentActiveExamTest,
-    currentActiveTrainingTest,
-    setCurrentActiveExamTest,
-    setCurrentActiveTrainingTest
+    currentActiveTest,
+    setCurrentActiveTest
   } = useContext(StateTestContext);
 
   const updateTrainingTests = (tests: Test[]) => {
     setTrainingTests(tests)
+    setCurrentActiveTest(tests[0])
   }
 
   const updateExamTests = (tests: Test[]) => {
     setExamTests(tests)
+    setCurrentActiveTest(tests[0])
   }
 
-  const updateCurrentTrainingTest = (test: Test) => {
-    setCurrentActiveTrainingTest(test)
-  }
-
-  const updateCurrentExamTest = (test: Test) => {
-    setCurrentActiveExamTest(test)
+  const updateCurrentTest = (test: Test) => {
+    setCurrentActiveTest(test)
   }
 
   const updateState = (state: StateType) => {
@@ -52,10 +48,8 @@ const useStateTest = () => {
     updateTrainingTests,
     trainingTests,
     examTests,
-    currentActiveExamTest,
-    currentActiveTrainingTest,
-    updateCurrentExamTest,
-    updateCurrentTrainingTest
+    currentActiveTest,
+    setCurrentActiveTest
   };
 };
 

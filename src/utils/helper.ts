@@ -51,3 +51,7 @@ export const getAllTest = (type: "TRAINING" | "EXAM", tests: Test[]): Test[] => 
   if(type === 'EXAM') return tests.filter(test => test.type === 'EXAM')
   return tests.filter(test => test.type === 'TRAINING')
 }
+
+export const getQuestionsByTestId = (testId: number, questions: Question[]): Question[] => {
+  return questions.filter(question => question.test_id === testId)
+}

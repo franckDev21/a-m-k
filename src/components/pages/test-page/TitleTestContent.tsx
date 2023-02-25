@@ -4,7 +4,8 @@ import useStateTest from "../../../hooks/useStateTest";
 import TimerCard from "./TimerCard";
 
 const TitleTestContent: FC<{ className?: string }> = ({ className = "" }) => {
-  const { state } = useStateTest();
+  
+  const { state, currentActiveTest } = useStateTest();
 
   const { currentQuestion } = useQuestions();
 
@@ -13,7 +14,7 @@ const TitleTestContent: FC<{ className?: string }> = ({ className = "" }) => {
       <h1
         className={`font-bold ${(state === "START" || state === 'DONE') ? "text-2xl" : "text-3xl "}`}
       >
-        TEST D’ENTRAINEMENT N°1
+        {currentActiveTest?.label}
       </h1>
       {state === "OFF" && (
         <p className="text-lg">

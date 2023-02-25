@@ -4,9 +4,11 @@ import { QuestionContextProps } from "../types";
 
 const QuestionTestContext = createContext<QuestionContextProps>({
   questions: [],
+  refQuestions: [],
   currentActiveQuestion: null,
   refCurrentActiveQuestion: null,
   setQuestions: () => {},
+  setRefQuestions: () => {},
   setCurrentActiveQuestion: () => {},
   setRefCurrentActiveQuestion: () => {},
   currentActiveResponse: null,
@@ -21,6 +23,7 @@ const QuestionTestContext = createContext<QuestionContextProps>({
 
 export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [refAllQuestions, setRefAllQuestions] = useState<Question[]>([]);
   const [currentActiveQuestion, setCurrentActiveQuestion] =
     useState<Question | null>(null);
   const [refCurrentActiveQuestion, setRefCurrentActiveQuestion] =
@@ -33,7 +36,9 @@ export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) 
 
   const contextValue: QuestionContextProps = {
     questions: allQuestions,
+    refQuestions: refAllQuestions,
     setQuestions: (questions) => setAllQuestions(questions),
+    setRefQuestions: (questions) => setRefAllQuestions(questions),
     currentActiveQuestion,
     refCurrentActiveQuestion,
     currentActiveResponse,

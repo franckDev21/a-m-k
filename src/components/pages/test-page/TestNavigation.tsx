@@ -1,21 +1,39 @@
 import React, { FC, useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import useQuestions from "../../../hooks/useQuestions";
 import useStateTest from "../../../hooks/useStateTest";
 import Test from "../../../models/Test";
-import { getAllTest } from "../../../utils/helper";
+import { getAllTest, getQuestionsByTestId } from "../../../utils/helper";
 import { tests } from "../../../utils/testData";
 import Accordeon from "./Accordeon";
 import TestItem from "./TestItem";
 
 const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
-  const { toggleShow, fullScreen } = useStateTest();
-  const [testTrainings,setTestTrainings] = useState<Test[]>([])
-  const [testExams,setTestExams] = useState<Test[]>([])
 
-  useEffect(()=>{
-    setTestTrainings(getAllTest('TRAINING',tests))
-    setTestExams(getAllTest('EXAM',tests));
-  },[])
+  const { updateQuestions, questions, refQuestions } = useQuestions()
+
+  const {
+    toggleShow,
+    fullScreen,
+    currentActiveTest,
+    examTests,
+    trainingTests,
+    updateExamTests,
+    updateTrainingTests,
+    setCurrentActiveTest,
+  } = useStateTest();
+
+  const updateStoreQuestion  = (test: Test) => {
+    setCurrentActiveTest(test)
+    updateQuestions(getQuestionsByTestId(test.id,refQuestions))    
+
+    console.log(getQuestionsByTestId(test.id,refQuestions),refQuestions);
+  }
+
+  useEffect(() => {
+    updateExamTests(getAllTest("EXAM", tests));
+    updateTrainingTests(getAllTest("TRAINING", tests));
+  }, []);
 
   return (
     <div
@@ -33,14 +51,24 @@ const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
 
       {/* accordeon */}
       <Accordeon className="mb-4" title="Tests d’entrainement">
-        {testTrainings.map((test,key) => (
-          <TestItem key={key} active={key === 0} label={test.label} />
+        {trainingTests.map((test, key) => (
+          <TestItem
+            onClick={() => updateStoreQuestion(test)}
+            key={key}
+            active={test.id === currentActiveTest?.id}
+            label={test.label}
+          />
         ))}
       </Accordeon>
 
       <Accordeon title="Tests d’examens">
-        {testExams.map((test,key) => (
-          <TestItem key={key} active={key === 0} label={test.label} />
+        {examTests.map((test, key) => (
+          <TestItem
+            onClick={() => updateStoreQuestion(test)}
+            key={key}
+            active={test.id === currentActiveTest?.id}
+            label={test.label}
+          />
         ))}
       </Accordeon>
     </div>

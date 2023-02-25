@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import QuestionTestContext from "../context/QuestionTestContext";
 import { Question } from "../models/Question";
-import { isLastQuestion } from "../utils/helper";
+import { getQuestionsByTestId, isLastQuestion } from "../utils/helper";
 import useStateTest from "./useStateTest";
 
 const useQuestions = () => {
   const {
     questions,
     setQuestions,
+    refQuestions,
+    setRefQuestions,
     currentActiveQuestion,
     refCurrentActiveQuestion,
     setCurrentActiveQuestion,
@@ -23,7 +25,7 @@ const useQuestions = () => {
   } = useContext(QuestionTestContext);
 
   // 'OFF' | 'START' | 'DONE' | 'REVIEW'
-  const { updateState, state } = useStateTest()
+  const { updateState, state, currentActiveTest } = useStateTest()
 
   const [totalQuestion,setTotalQuestion] = useState(0)
 
@@ -32,7 +34,12 @@ const useQuestions = () => {
     setCurrentActiveQuestion(questions[0])
     setRefCurrentActiveQuestion(questions[0])
     setTotalQuestion(questions.length)
+    setCountQuestion(1)
   };
+
+  const updateRefQuestions = (questions: Question[]) => {
+    setRefQuestions(questions)
+  }
 
   const updateCurrentQuestion =  (question: Question) => {
     setCurrentActiveQuestion(question)
@@ -107,6 +114,8 @@ const useQuestions = () => {
   return {
     questions,
     updateQuestions,
+    refQuestions,
+    updateRefQuestions,
     totalQuestion,
     updateCurrentQuestion,
     currentQuestion: currentActiveQuestion,

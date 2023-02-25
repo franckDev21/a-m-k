@@ -44,18 +44,18 @@ export type StateTestProps = {
   setExamTests: (tests: Test[]) => any,
   setState: (value: StateType) => any,
   toggleShowAllScreen: () => any,
-  currentActiveTrainingTest: Test|null,
-  currentActiveExamTest: Test|null,
-  setCurrentActiveTrainingTest: (test: Test) => any,
-  setCurrentActiveExamTest: (test: Test) => any
+  currentActiveTest: Test|null,
+  setCurrentActiveTest: (test: Test) => any
 }
 
 export type QuestionContextProps = {
   questions: Question[],
+  refQuestions: Question[],
   refCurrentActiveQuestion: Question|null,
   currentActiveQuestion: Question|null,
   currentActiveResponse: string|null,
   setQuestions: (questions: Question[]) => any,
+  setRefQuestions: (questions: Question[]) => any,
   setCurrentActiveQuestion: (question: Question) => any,
   setRefCurrentActiveQuestion: (question: Question) => any,
   setCurrentActiveResponse: (value: string) => any,

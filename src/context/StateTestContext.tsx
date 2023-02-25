@@ -11,10 +11,8 @@ const StateTestContext = createContext<StateTestProps>({
   setExamTests: () => {},
   setState: (value) => {},
   toggleShowAllScreen: () => {},
-  currentActiveExamTest: null,
-  currentActiveTrainingTest: null,
-  setCurrentActiveExamTest: () => {},
-  setCurrentActiveTrainingTest: () => {}
+  currentActiveTest: null,
+  setCurrentActiveTest: () => {},
 });
 
 export const StateTestProvider: FC<{ children: ReactNode }> = ({
@@ -26,8 +24,7 @@ export const StateTestProvider: FC<{ children: ReactNode }> = ({
   const [trainingTests,setTrainingTests] = useState<Test[]>([]);
   const [examTests,setExamTests] = useState<Test[]>([]);
 
-  const [currentActiveExamTest,setCurrentActiveExamTest] = useState<Test|null>(null);
-  const [currentActiveTrainingTest,setCurrentActiveTrainingTest] = useState<Test|null>(null);
+  const [currentActiveTest,setCurrentActiveTest] = useState<Test|null>(null);
 
   const contextValue: StateTestProps = {
     state,
@@ -42,10 +39,8 @@ export const StateTestProvider: FC<{ children: ReactNode }> = ({
     setState: (value) => {
       setState(value);
     },
-    currentActiveExamTest,
-    currentActiveTrainingTest,
-    setCurrentActiveExamTest: (value) => setCurrentActiveExamTest(value),
-    setCurrentActiveTrainingTest: (value) => setCurrentActiveTrainingTest(value),
+    currentActiveTest,
+    setCurrentActiveTest: (value) => setCurrentActiveTest(value),
   };
 
   return (
