@@ -6,6 +6,9 @@ interface QuestionItemProps {
   active?: boolean;
   label: string;
   onClick?: () => any;
+  success?:boolean;
+  error?:boolean;
+  type?: 'SQUARE'|'CIRCLE'
 }
 
 const QuestionItem: FC<QuestionItemProps> = ({
@@ -13,6 +16,9 @@ const QuestionItem: FC<QuestionItemProps> = ({
   active = false,
   label,
   onClick = () => {},
+  success=false,
+  error=false,
+  type = 'CIRCLE'
 }) => {
   const { updateCurrentResponse } = useQuestions();
 
@@ -24,14 +30,16 @@ const QuestionItem: FC<QuestionItemProps> = ({
   return (
     <div
       onClick={handleClick}
-      className={`py-3 px-4 w-[99%] cursor-pointer font-bold border border-secondary flex items-center space-x-2 ${className}`}
+      className={`py-3 px-4 w-[99%] ${(error || success) ? 'pointer-events-none select-none cursor-none':'cursor-pointer'} ${error && 'bg-red-100'} ${success && 'bg-green-100'} font-bold border border-secondary flex items-center space-x-2 ${className}`}
     >
       <span
         className={`${
           active && "bg-secondary"
-        } w-4 h-4 border-2 border-secondary rounded-full`}
+        } w-4 h-4 border-2 border-secondary ${type === 'CIRCLE' ? 'rounded-full':''}`}
       ></span>
       <span>{label}</span>
+      {error && <span className="text-sm font-bold text-red-700">(Incorrect)</span> }
+      {success && <span className="text-sm font-bold text-green-700">(Incorrect)</span> }
     </div>
   );
 };

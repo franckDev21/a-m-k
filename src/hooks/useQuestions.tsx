@@ -103,6 +103,8 @@ const useQuestions = () => {
       }else if(state === 'DONE'){
         // on ouvre la modal d'avertissement de fin 
         openModal()
+
+        updateState('END')
       }
     }
   }

@@ -13,6 +13,7 @@ const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
   const { updateQuestions, refQuestions } = useQuestions()
 
   const {
+    state,
     toggleShow,
     fullScreen,
     currentActiveTest,
@@ -27,7 +28,8 @@ const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
   const updateStoreQuestion  = (test: Test) => {
     setCurrentActiveTest(test)
     updateQuestions(getQuestionsByTestId(test.id,refQuestions))
-    updateState('OFF')
+
+    if(state !== 'REVIEW' && state !== 'END') updateState('OFF')
   }
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const TitleTestContent: FC<{ className?: string }> = ({ className = "" }) => {
       >
         {currentActiveTest?.label}
       </h1>
-      {state === "OFF" && (
+      {(state === "OFF" || state === 'END') && (
         <p className="text-lg">
           {currentActiveTest?.sub_title}
         </p>

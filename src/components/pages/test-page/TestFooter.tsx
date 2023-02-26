@@ -18,7 +18,7 @@ const TestFooter: FC<TestFooterProps> = ({
 }) => {
   const { toggleShow, fullScreen, state } = useStateTest();
 
-  const { next: nextStape , currentResponse} = useQuestions();
+  const { next: nextStape, currentResponse } = useQuestions();
 
   const [textButton, setTextButton] = useState("Commencer le test");
 
@@ -52,13 +52,19 @@ const TestFooter: FC<TestFooterProps> = ({
           icon={<BiChevronRight className="text-lg" />}
           rounded
           defauldPadding={false}
-          className={`font-bold px-4 py-3 ${!currentResponse && (state === "START" || state === 'DONE') && ''} ${
-            (state !== "DONE" && (currentResponse || state === 'OFF'))
+          className={`font-bold px-4 py-3
+          ${
+            state !== "DONE" && (currentResponse || state === "OFF")
               ? "bg-secondary text-white"
               : "text-secondary border-secondary"
           }`}
-          label={(!currentResponse && state !== 'OFF') ? 'Sauter la question':textButton}
+          label={
+            !currentResponse && state !== "OFF"
+              ? "Sauter la question"
+              : textButton
+          }
         />
+
         <IoMdSettings className="text-2xl cursor-pointer" />
         {!fullScreen && (
           <BsArrowsFullscreen
