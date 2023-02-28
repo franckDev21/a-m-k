@@ -3,7 +3,7 @@ export interface Question {
   title: string;
   sub_title?: string;
   timer: number;
-  response_type: "SINGLE" | "MULTIPLE";
+  response_type: "SINGLE" | "MULTIPLE" | "MULTIPLE_LIMIT";
   suggestions: string[];
   responses: string[] | null;
   response: string | null;

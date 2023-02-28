@@ -426,7 +426,7 @@ export const tests: Test[] = [
     label: "Test d’entrainement N°2",
     certification_id: 1,
     sub_title: "56 questions|33 minutes | Un taux de réponses correctes de 85 % est nécessaire pour réussir",
-    time: 3600
+    time: 3600*2
   },
   {
     id: 3,

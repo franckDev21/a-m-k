@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import useQuestions from "./useQuestions";
+import useStateTest from "./useStateTest";
 
 const useTimer = () => {
-
-  const [secondes,setSeconds] = useState(0)
-  const { stopTestQuestion ,currentQuestion, desactiveQuestion, refCurrentQuestion} = useQuestions()
+  const [secondes, setSeconds] = useState(0);
+  const { currentActiveTest } = useStateTest();
+  const { stopTestQuestion, desactiveQuestion } = useQuestions();
 
   const convertToTime = (p_seconds: number) => {
     if (p_seconds >= 3600) {
@@ -41,35 +42,35 @@ const useTimer = () => {
 
   const showTime = (seconds: number) => {
     return {
-      hours : convertToTime(seconds).hours,
-      minutes : convertToTime(seconds).minutes,
-      seconds : convertToTime(secondes).seconds,
-    }
-  }
+      hours: convertToTime(seconds).hours,
+      minutes: convertToTime(seconds).minutes,
+      seconds: convertToTime(secondes).seconds,
+    };
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if(secondes >= 1){
-        if(!stopTestQuestion){
-          setSeconds(s => s - 1)
+      if (secondes >= 1) {
+        if (!stopTestQuestion) {
+          setSeconds((s) => s - 1);
         }
-      }else{
-        clearInterval(interval)
-        desactiveQuestion()
+      } else {
+        clearInterval(interval);
+        desactiveQuestion();
       }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [secondes,stopTestQuestion]);
+  }, [secondes, stopTestQuestion]);
 
-  useEffect(() => {      
-      setSeconds(currentQuestion?.timer as number)
-  },[refCurrentQuestion])
+  useEffect(() => {
+    setSeconds(currentActiveTest?.time as number);
+  }, [currentActiveTest]);
 
   return {
-    hours : showTime(secondes).hours,
-    minutes : showTime(secondes).minutes,
-    seconds : showTime(secondes).seconds,
+    hours: showTime(secondes).hours,
+    minutes: showTime(secondes).minutes,
+    seconds: showTime(secondes).seconds,
   };
 };
 

@@ -113,11 +113,19 @@ const useQuestions = () => {
     }
   }
 
+  const prev = () => {
+    let index = questions.indexOf(refCurrentActiveQuestion as Question) - 1
+    setCountQuestion(countQuestion-1)
+    setCurrentActiveQuestion(questions[index])
+    setRefCurrentActiveQuestion(questions[index])
+  }
+
   const closeModal = () => setShowQuestionModal(false)
   const openModal = () => setShowQuestionModal(true)
 
-
   return {
+    next,
+    prev,
     questions,
     updateQuestions,
     refQuestions,
@@ -128,7 +136,6 @@ const useQuestions = () => {
     refCurrentQuestion: refCurrentActiveQuestion,
     updateCurrentResponse,
     currentResponse: currentActiveResponse,
-    next,
     showEndQuestionModal: showQuestionModal,
     closeEndQuestionModal: closeModal,
     openEndQuestionModal: openModal,
@@ -140,6 +147,7 @@ const useQuestions = () => {
     stopTestQuestion,
     startTest,
     reStartCurrentTest,
+    setStopTestQuestion,
   };
 };
 

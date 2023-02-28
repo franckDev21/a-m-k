@@ -1,5 +1,6 @@
 import Offre, { typeOffre } from "../models/Offre";
 import { Question } from "../models/Question";
+import { ResponseQuestion } from "../models/ResponseQuestion";
 import Test from "../models/Test";
 
 export interface CredentialType {
@@ -52,15 +53,19 @@ export type StateTestProps = {
 
 export type QuestionContextProps = {
   questions: Question[],
+  responses: ResponseQuestion[],
   refQuestions: Question[],
   refCurrentActiveQuestion: Question|null,
   currentActiveQuestion: Question|null,
   currentActiveResponse: string|null,
+  currentTabResponses: string[],
   setQuestions: (questions: Question[]) => any,
+  setResponses: (responses: ResponseQuestion[]) => any,
   setRefQuestions: (questions: Question[]) => any,
   setCurrentActiveQuestion: (question: Question) => any,
   setRefCurrentActiveQuestion: (question: Question) => any,
   setCurrentActiveResponse: (value: string) => any,
+  setCurrentTabResponses: (responses: string[]) => any,
   showQuestionModal: boolean,
   setShowQuestionModal: (value: boolean) => any,
   countQuestion: number,

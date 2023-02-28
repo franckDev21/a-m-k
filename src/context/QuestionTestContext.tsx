@@ -1,15 +1,20 @@
 import React, { createContext, FC, ReactNode, useState } from "react";
 import { Question } from "../models/Question";
+import { ResponseQuestion } from "../models/ResponseQuestion";
 import { QuestionContextProps } from "../types";
 
 const QuestionTestContext = createContext<QuestionContextProps>({
   questions: [],
+  responses: [],
   refQuestions: [],
   currentActiveQuestion: null,
+  currentTabResponses: [],
   refCurrentActiveQuestion: null,
   setQuestions: () => {},
+  setResponses: () => {},
   setRefQuestions: () => {},
   setCurrentActiveQuestion: () => {},
+  setCurrentTabResponses: () => {},
   setRefCurrentActiveQuestion: () => {},
   currentActiveResponse: null,
   setCurrentActiveResponse: () => {},
@@ -22,8 +27,11 @@ const QuestionTestContext = createContext<QuestionContextProps>({
 });
 
 export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) => {
+
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [responses,setResponses] = useState<ResponseQuestion[]>([])
   const [refAllQuestions, setRefAllQuestions] = useState<Question[]>([]);
+  const [currentTabResponses, setCurrentTabResponses] = useState<string[]>([]);
   const [currentActiveQuestion, setCurrentActiveQuestion] =
     useState<Question | null>(null);
   const [refCurrentActiveQuestion, setRefCurrentActiveQuestion] =
@@ -36,12 +44,16 @@ export const QuestionTestProvider: FC<{ children: ReactNode }> = ({ children }) 
 
   const contextValue: QuestionContextProps = {
     questions: allQuestions,
+    responses,
+    currentTabResponses,
     refQuestions: refAllQuestions,
     setQuestions: (questions) => setAllQuestions(questions),
+    setResponses: (responses) => setResponses(responses),
     setRefQuestions: (questions) => setRefAllQuestions(questions),
     currentActiveQuestion,
     refCurrentActiveQuestion,
     currentActiveResponse,
+    setCurrentTabResponses: (responses) => setCurrentTabResponses(responses) ,
     setCurrentActiveQuestion: (question) => setCurrentActiveQuestion(question),
     setRefCurrentActiveQuestion: (question) => setRefCurrentActiveQuestion(question),
     setCurrentActiveResponse: (value) => setCurrentActiveResponse(value),

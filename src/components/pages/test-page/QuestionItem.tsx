@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import useQuestions from "../../../hooks/useQuestions";
+import useResponse from "../../../hooks/useResponse";
 
 interface QuestionItemProps {
   className?: string;
@@ -20,11 +21,14 @@ const QuestionItem: FC<QuestionItemProps> = ({
   error=false,
   type = 'CIRCLE'
 }) => {
+
   const { updateCurrentResponse } = useQuestions();
+  const { updateResponse } = useResponse()
 
   const handleClick = () => {
     updateCurrentResponse(label);
     onClick();
+    updateResponse(label)
   };
 
   return (
