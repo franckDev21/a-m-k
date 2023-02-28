@@ -38,13 +38,22 @@ export const allIdsExist = (tabIds: number[]) => {
   return allExist
 }
 
-export const isLastQuestion = (allQuestions: Question[],currentActiveQuestion: Question) => {
-  // on verifie si la question active n'est pas la derniere de la liste
-  let indexOfCurrentQuetion = allQuestions.indexOf(currentActiveQuestion)
-  if(indexOfCurrentQuetion === allQuestions.length - 1){
+const isALastElement = (tabs: any[],element: any) => {
+  let indexOfCurrentElement = tabs.indexOf(element)
+  if(indexOfCurrentElement === tabs.length - 1){
     return true
   }
   return false
+}
+
+export const isLastTest = (allTests: Test[],currentActiveTest: Test) => {
+  // on verifie si la question active n'est pas la derniere de la liste
+  return isALastElement(allTests,currentActiveTest);
+}
+
+export const isLastQuestion = (allQuestions: Question[],currentActiveQuestion: Question) => {
+  // on verifie si la question active n'est pas la derniere de la liste
+  return isALastElement(allQuestions,currentActiveQuestion)
 }
 
 export const getAllTest = (type: "TRAINING" | "EXAM", tests: Test[]): Test[] => {

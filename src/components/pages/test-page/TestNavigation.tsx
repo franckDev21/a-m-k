@@ -21,12 +21,12 @@ const TestNavigation: FC<{ className?: string }> = ({ className = "" }) => {
     trainingTests,
     updateExamTests,
     updateTrainingTests,
-    setCurrentActiveTest,
+    updateCurrentTest,
     updateState
   } = useStateTest();
 
   const updateStoreQuestion  = (test: Test) => {
-    setCurrentActiveTest(test)
+    updateCurrentTest(test)
     updateQuestions(getQuestionsByTestId(test.id,refQuestions))
 
     if(state !== 'REVIEW' && state !== 'END') updateState('OFF')

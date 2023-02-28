@@ -2,6 +2,7 @@ import { useContext } from "react";
 import StateTestContext from "../context/StateTestContext";
 import Test from "../models/Test";
 import { StateType } from "../types";
+import { isLastTest } from "../utils/helper";
 
 const useStateTest = () => {
   const {
@@ -9,13 +10,33 @@ const useStateTest = () => {
     fullScreen,
     toggleShowAllScreen,
     setState,
+    tests,
     examTests,
     trainingTests,
+    setTests,
     setExamTests,
     setTrainingTests,
     currentActiveTest,
-    setCurrentActiveTest
+    setCurrentActiveTest,
   } = useContext(StateTestContext);
+
+  const updateTests = (tests: Test[]) => {
+    setTests(tests)
+  }
+
+  const nextTest = () => {
+    if(!isLastTest(tests,currentActiveTest as Test)){
+      let index = tests.indexOf(currentActiveTest as Test) + 1
+      setCurrentActiveTest(tests[index])
+    }else{
+      setCurrentActiveTest(tests[0])
+    }
+    updateState('OFF')
+  }
+
+  const prevTest = () => {
+    
+  }
 
   const updateTrainingTests = (tests: Test[]) => {
     setTrainingTests(tests)
@@ -40,6 +61,7 @@ const useStateTest = () => {
   };
 
   return {
+    tests,
     state,
     fullScreen,
     updateState,
@@ -49,7 +71,10 @@ const useStateTest = () => {
     trainingTests,
     examTests,
     currentActiveTest,
-    setCurrentActiveTest
+    updateCurrentTest,
+    updateTests,
+    nextTest,
+    prevTest
   };
 };
 

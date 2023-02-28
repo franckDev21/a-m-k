@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import useStateTest from "../../../hooks/useStateTest";
+import { tests } from "../../../utils/testData";
 import InstructionsTestContent from "./InstructionsTestContent";
 import QuestionsBlock from "./QuestionsBlock";
 import ResponseResultView from "./ResponseResultView";
@@ -9,7 +10,12 @@ import TitleTestContent from "./TitleTestContent";
 
 const TestContent: FC<{ className?: string }> = ({ className = '' }) => {
 
-  const { state } = useStateTest()
+  const { state, updateTests } = useStateTest()
+
+  // on mets a jour le store test
+  useEffect(() => {
+    updateTests(tests)
+  },[])
 
   return (
     <div className={`${className} space-y-1 mb-10 flex-grow`}>

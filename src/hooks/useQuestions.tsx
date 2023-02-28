@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import QuestionTestContext from "../context/QuestionTestContext";
 import { Question } from "../models/Question";
-import { getQuestionsByTestId, isLastQuestion } from "../utils/helper";
+import { isLastQuestion } from "../utils/helper";
 import useStateTest from "./useStateTest";
 
 const useQuestions = () => {
@@ -37,6 +37,14 @@ const useQuestions = () => {
     setCountQuestion(1)
   };
 
+  const startTest = () => {
+    updateState('START')
+  }
+
+  const reStartCurrentTest = () => {
+    updateState('OFF')
+  }
+
   const updateRefQuestions = (questions: Question[]) => {
     setRefQuestions(questions)
   }
@@ -52,9 +60,7 @@ const useQuestions = () => {
     }
   }
 
-  const toggleActiveQuestion = () => {
-    console.log('--click--');
-    
+  const toggleActiveQuestion = () => {    
     if(currentActiveQuestion){
       toggleStopTest() // toggle timer
       setCurrentActiveQuestion({...currentActiveQuestion,time_is_over: !currentActiveQuestion.time_is_over})
@@ -101,9 +107,7 @@ const useQuestions = () => {
       }else if(state === 'START'){
         updateState('DONE')
       }else if(state === 'DONE'){
-        // on ouvre la modal d'avertissement de fin 
-        openModal()
-
+        // on verifie si on repondu a toutes les questions on été repondu
         updateState('END')
       }
     }
@@ -133,7 +137,9 @@ const useQuestions = () => {
     activeQuestion,
     toggleActiveQuestion,
     toggleStopTest,
-    stopTestQuestion
+    stopTestQuestion,
+    startTest,
+    reStartCurrentTest,
   };
 };
 

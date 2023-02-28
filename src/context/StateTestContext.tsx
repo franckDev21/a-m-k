@@ -6,7 +6,9 @@ const StateTestContext = createContext<StateTestProps>({
   state: "OFF",
   fullScreen: false,
   trainingTests: [],
+  tests: [],
   examTests: [],
+  setTests: () => {},
   setTrainingTests: () => {},
   setExamTests: () => {},
   setState: (value) => {},
@@ -21,6 +23,7 @@ export const StateTestProvider: FC<{ children: ReactNode }> = ({
   const [state, setState] = useState<StateType>("OFF");
   const [fullScreen, setFullScreen] = useState(false);
 
+  const [tests,setTests] = useState<Test[]>([]);
   const [trainingTests,setTrainingTests] = useState<Test[]>([]);
   const [examTests,setExamTests] = useState<Test[]>([]);
 
@@ -29,8 +32,10 @@ export const StateTestProvider: FC<{ children: ReactNode }> = ({
   const contextValue: StateTestProps = {
     state,
     fullScreen,
+    tests,
     trainingTests,
     examTests,
+    setTests: (tests) => setTests(tests),
     setTrainingTests: (tests) => setTrainingTests(tests),
     setExamTests: (tests) => setExamTests(tests),
     toggleShowAllScreen: () => {

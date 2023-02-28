@@ -38,8 +38,10 @@ export type StateType = 'OFF'|'START'|'END'|'DONE'|'REVIEW'
 export type StateTestProps = {
   state: StateType,
   fullScreen: boolean,
+  tests: Test[],
   trainingTests: Test[],
   examTests: Test[],
+  setTests: (tests: Test[]) => any,
   setTrainingTests: (tests: Test[]) => any,
   setExamTests: (tests: Test[]) => any,
   setState: (value: StateType) => any,
