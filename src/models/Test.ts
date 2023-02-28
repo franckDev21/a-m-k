@@ -5,4 +5,5 @@ export default interface Test {
   certification_id: number;
   sub_title: string;
   total_question?: number;
+  time: number;
 }
